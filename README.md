@@ -1,3 +1,5 @@
+[Live Site](https://lumos-online-banking-698c21a030ae.herokuapp.com/)
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome,
@@ -30,3 +32,181 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 ---
 
 Happy coding!
+
+# Music Theory Quiz
+
+Test and enhance your music theory knowledge with this engaging three-level quiz. Whether you're a beginner or an experienced musician, this quiz is designed to challenge and improve your understanding of music theory.
+
+Unlock a total of 150 questions spread across three difficulty levels, allowing you to gradually progress and expand your musical expertise.
+
+Keep track of your scores on the built-in scoreboard, compare your performance with previous attempts, and strive to improve your results over time. This feature serves as a valuable tool for monitoring your progress and motivating you to achieve higher scores.
+
+### [Live Site](https://danmorriss.github.io/music-theory-quiz)
+
+![Responsive mockup](assets/images/responsive-mockup.png)
+
+## Contents
+
+* [**User Experience (UX)**](<#user-experience-ux>)
+    * [User Stories](<#user-stories>)
+        * [First Time Visitor Goals](<#first-time-visitor-goals>)
+        * [Returning Visitor Goals](<#returning-visitor-goals>)
+        * [Frequent Visitor Goals](<#frequent-visitor-goals>)
+    * [Wireframes](<#wireframes>)
+        * [Home](<#home>)
+        * [Game Screen](<#game-screen>)
+        * [Difficulty](<#difficulty>)
+        * [High Scores](<#high-scores>)
+* [**Design**](<#design>)
+    * [Color Scheme](<#color-scheme>)
+    * [Typography](<#typography>)
+* [**Features**](#features)
+    * [Existing Features](<#existing-features>)
+        * [Homepage](<#homepage>)
+        * [The Rules](<#the-rules>)
+        * [Enter a Username](<#enter-a-username>)
+        * [Choose a Difficulty](<#choose-a-difficlty>)
+        * [Answer the Questions](<#answer-the-questions>)
+        * [High Scores](<#high-scores>)
+        * [Sound](<#sound>)
+        * [Close the game](<#close-the-game>)
+    * [Accesibility](<#accesibility>)
+    * [Future Features](<#future-features>)
+* [**Technologies Used**](<#technologies-used>)
+    * [Languages](<#languages>)
+* [**Testing**](<#testing>)
+    * [Code Validation](<>)
+        * [W3C HTML Checker](<#w3c-html-checker>)
+        * [W3C CSS Checker](<#w3c-css-checker>)
+        * [Lighthouse](<#lighthouse>)
+    * [Responsiveness Test](<#responsiveness-test>)
+    * [Browser Compatibility](<#browser-compatibility>)
+    * [Peer Testing](<#peer-testing>)
+* [**Bugs**](<#bugs>)
+    * [Solved Bugs](<#solved-bugs>)
+    * [Unsolved Bugs](<#unsolved-bugs>)
+* [**Deployment**](<#deployment>)
+* [**Credits**](<#credits>)
+    * [Resources](<#resources>)
+    * [Content](<#content>)
+    * [Media](<#media>)
+* [**Acknowledgements**](<#acknowledgements>)
+
+
+## Features
+### Existing Features
+
+#### Homepage
+
+#### The Rules
+
+#### Enter a Username
+
+#### Choose a Difficlty
+
+#### Answer the Questions
+
+#### High Scores
+
+#### Sound
+
+#### Close the Game
+
+[Back to top](<#contents>)
+### Future Features
+
+- Transfer funds to another user.
+
+[Back to top](<#contents>)
+
+## Testing
+
+### Bugs
+
+#### Solved Bugs
+
+- Bug 1
+
+#### Unsolved Bugs
+
+No known bugs.
+
+[Back to top](<#contents>)
+
+### Validator Testing
+
+- PEP8
+    - No erors were returned from [PEP8online.com](https://pep8online.com)
+
+### Peer Testing
+
+As well as testing myself, the application was tested by the following external users for bugs and userbility.
+
+- Kent Yates
+- Selina Sheerin
+- Luke Newman
+
+[Back to top](<#contents>)
+
+## Deployment
+Git and GitHUb were used for version control. As Python is a backend language and can't be displayed with GitHub I used Heroku for the live preview.
+
+### To Deploy the project on Heroku
+1. Login to Heroku
+
+### To Fork the project
+To make a copy of the GitHub Repository you can fork a copy to edit it without changing the root file. This can then be used to update the original repository. To fork take the following steps:
+1. Login to GitHub
+2. Go to the repository [DanMorriss/jazz-platform](https://github.com/DanMorriss/lumos-online-banking)
+3. On the top right-hand side of the page click the `fork` button and save a copy of the original repository to your GitHub account.
+
+### To Clone the project
+To clone the project on GitHub:
+1. Click the `code` button  
+2. Click the `local` tab
+3. Under HTTPS click the clipboard icon to copy the URL
+4. In your IDE of choice, open Git Bash
+5. Change the current working directory to the location where you want the cloned directory to be made
+6. Type `git clone` and then paste the URL copied from GitHub
+7. Press enter and the local clone will be created
+![Clone walkthrough image](assets/images/clone.png)
+
+[Back to top](<#contents>)
+
+## Credits
+
+### Resources
+
+- [Lucidchart](<https://www.lucidchart.com/pages/>) for the flowchart.
+- [Github](<https://github.com/>) to store the code.
+- [Heroku](<https://heroku.com/>)
+- [VS Code](<https://code.visualstudio.com/>) to write the code.
+- [Am I Responsive?](<https://ui.dev/amiresponsive>) for the dislay image across devices.
+- [Stack Overflow](<https://stackoverflow.com/>) for general troubleshooting.
+- [W3 Schools](<https://www.w3schools.com/>) for general troubleshooting.
+- [MDN Web Docs](<https://developer.mozilla.org/en-US/>) for general troubleshooting.
+- [Google Sheets](<https://www.google.co.uk/sheets/about/>) for the spreadsheet used to store the customer data.
+
+### Languages
+
+- Python
+
+### Libraries
+
+- [gspread](https://docs.gspread.org/en/v3.7.0/api.html) to link up the Google Sheet.
+- [credentials](https://pypi.org/project/credentials/) to link the Google Sheet.
+- [pyfiglet](https://www.geeksforgeeks.org/python-ascii-art-using-pyfiglet-module/) for the logo.
+- [time](https://www.programiz.com/python-programming/time/sleep) for the sleep fuction.
+- [colorama](https://pypi.org/project/colorama/) to color the text in the terminal.
+- [os](https://www.geeksforgeeks.org/clear-screen-python/) to clear the terminal.
+
+### Code Used
+
+[Back to top](<#contents>)
+
+## Acknowledgements
+
+- [Precious Ijege](<https://github.com/precious-ijege>), my Code Institute Mentor.
+- [Kent Yates](<https://github.com/Jelly-man>).
+
+[Back to top](<#contents>)

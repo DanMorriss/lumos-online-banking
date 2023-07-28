@@ -2,12 +2,15 @@
 # Google API's for access to the spreadsheets
 import gspread
 from google.oauth2.service_account import Credentials
-
 # Pyfiglet import for the logo
 import pyfiglet
 # Pythons time module for the staggered text
 from time import sleep
 import sys
+# Colorama to change the text color
+from colorama import Fore, Back
+# To clear the termianal
+import os
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -35,9 +38,15 @@ def type(text):
         sleep(0.05)
     print('')
 
+def clear():
+    """
+    Clears the terminal
+    """
+    os.system('clear')
+    
 
 logo = pyfiglet.figlet_format('Lumos Online Banking')
-print(logo)
+print(Fore.GREEN + logo)
 sleep(0.5)
 type('Welcome to Lumos Online Banking')
 type('Please enter your unsername to login')
