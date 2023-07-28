@@ -33,17 +33,9 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 
 Happy coding!
 
-# Music Theory Quiz
+# Lumos Online Banking
 
-Test and enhance your music theory knowledge with this engaging three-level quiz. Whether you're a beginner or an experienced musician, this quiz is designed to challenge and improve your understanding of music theory.
-
-Unlock a total of 150 questions spread across three difficulty levels, allowing you to gradually progress and expand your musical expertise.
-
-Keep track of your scores on the built-in scoreboard, compare your performance with previous attempts, and strive to improve your results over time. This feature serves as a valuable tool for monitoring your progress and motivating you to achieve higher scores.
-
-### [Live Site](https://danmorriss.github.io/music-theory-quiz)
-
-![Responsive mockup](assets/images/responsive-mockup.png)
+![Responsive mockup]()
 
 ## Contents
 
@@ -118,6 +110,14 @@ Keep track of your scores on the built-in scoreboard, compare your performance w
 - Transfer funds to another user.
 
 [Back to top](<#contents>)
+
+## Data Model
+
+- Google sheets was used to store and access user data.
+
+## Flowchart
+
+![Flow Chart](/assets/lumos_flowchat.png)
 
 ## Testing
 
