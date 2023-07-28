@@ -1,5 +1,10 @@
+
+# Google API's for access to the spreadsheets
 import gspread
 from google.oauth2.service_account import Credentials
+
+# Pyfiglet import for the logo
+import pyfiglet
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -16,4 +21,5 @@ customers = SHEET.worksheet('customers')
 
 data = customers.get_all_values()
 
-print(data)
+logo = pyfiglet.figlet_format('Lumos Online Banking')
+print(logo)
