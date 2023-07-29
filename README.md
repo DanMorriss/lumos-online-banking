@@ -125,7 +125,7 @@ Happy coding!
 
 #### Solved Bugs
 
-- Bug 1
+- In the welcome function the while loop was not ending after a user had selected a valid option. I needed to add a break statement and calling the next function.
 
 #### Unsolved Bugs
 

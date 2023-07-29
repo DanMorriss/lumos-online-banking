@@ -57,12 +57,20 @@ def welcome():
         existing_account = input('2: Create an Account \n')
         if (existing_account == "1"):
             type("Loading Login Page...")
+            login()
             break
         elif (existing_account == "2"):
             type('Loading Account Setup...')
+            create_account()
             break
         else:
             type('Please enter 1 to Login or 2 to create and account')
+
+def login():
+    type('Please enter your username')
+    
+def create_account():
+    type('To create an account please visit a store.')
 
 def main():
     clear()
