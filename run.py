@@ -24,7 +24,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('lumos_online_banking')
 
 customers = SHEET.worksheet('customers')
-
 data = customers.get_all_values()
 
 def type(text):
@@ -44,10 +43,29 @@ def clear():
     """
     os.system('clear')
     
+def welcome():
+    """
+    The welcome sequence asking if you would like to login or create an account.
+    """
+    LOGO = pyfiglet.figlet_format('Lumos Online Banking')
+    print(Fore.GREEN + LOGO)
+    sleep(0.5)
+    type('Welcome to Lumos Online Banking')
+    type('Would you like to login or create an account?')
+    print('1: Login')
+    while True:
+        existing_account = input('2: Create an Account \n')
+        if (existing_account == "1"):
+            type("Loading Login Page...")
+            break
+        elif (existing_account == "2"):
+            type('Loading Account Setup...')
+            break
+        else:
+            type('Please enter 1 to Login or 2 to create and account')
 
-logo = pyfiglet.figlet_format('Lumos Online Banking')
-print(Fore.GREEN + logo)
-sleep(0.5)
-type('Welcome to Lumos Online Banking')
-type('Please enter your unsername to login')
-input('Username: \n')
+def main():
+    clear()
+    welcome()
+    
+main()
