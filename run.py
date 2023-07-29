@@ -53,8 +53,9 @@ def welcome():
     type('Welcome to Lumos Online Banking')
     type('Would you like to login or create an account?')
     print('1: Login')
+    print('2: Create an account')
     while True:
-        existing_account = input('2: Create an Account \n')
+        existing_account = input('')
         if (existing_account == "1"):
             type("Loading Login Page...")
             login()
@@ -64,7 +65,7 @@ def welcome():
             create_account()
             break
         else:
-            type('Please enter 1 to Login or 2 to create and account')
+            type('Please enter 1 to Login or 2 to create an account')
 
 def login():
     type('Please enter your username')
