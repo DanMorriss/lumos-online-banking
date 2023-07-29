@@ -126,6 +126,7 @@ Happy coding!
 #### Solved Bugs
 
 - In the welcome function the while loop was not ending after a user had selected a valid option. I needed to add a break statement and calling the next function.
+- In the create_account function an infinate loop was created due to the user inout being before the loop.
 
 #### Unsolved Bugs
 

@@ -58,23 +58,43 @@ def welcome():
         existing_account = input('')
         if (existing_account == "1"):
             type("Loading Login Page...")
+            sleep(1)
             login()
             break
         elif (existing_account == "2"):
             type('Loading Account Setup...')
+            sleep(1)
             create_account()
             break
         else:
-            type('Please enter 1 to Login or 2 to create an account')
+            print('Please enter 1 to Login or 2 to create an account')
 
 def login():
-    type('Please enter your username')
+    print('Please enter your username to login')
+    submitted_username = input('')
+    type('Checking database...')
+    sleep(1)
+    type(f'Welcome {submitted_username}')
     
 def create_account():
-    type('To create an account please visit a store.')
+    print('Please select a username between 5 and 10 characters long.')
+    customer_database = SHEET.worksheet('customers')
+    
+    while True:
+        username = input('')
+        if (len(username) < 11) and (len(username) > 4):
+            print('Username valid')
+            type('Creating account...')
+            customer_database.append_row([username])
+            type('Account created.')
+            print('your PIN numbre is:')
+            login()
+        else:
+            print('Invalid username. Please select a username between 5 and 10 characters long.')
 
 def main():
     clear()
     welcome()
     
 main()
+create_account()
