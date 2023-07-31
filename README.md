@@ -127,10 +127,13 @@ Happy coding!
 
 - In the welcome function the while loop was not ending after a user had selected a valid option. I needed to add a break statement and calling the next function.
 - In the create_account function an infinate loop was created due to the user inout being before the loop.
+- I needed to return the pin after it was being crreated for it to be sent to the databse.
+
 
 #### Unsolved Bugs
 
-No known bugs.
+- Whitespace can be used in username.
+- If incorrect username eneterd in login, on second attempt it responds 'Incorect PIN'
 
 [Back to top](<#contents>)
 
