@@ -60,12 +60,12 @@ def welcome():
         existing_account = input('')
         if (existing_account == "1"):
             type("Loading Login Page...")
-            sleep(1)
+            sleep(0.5)
             login()
             break
         elif (existing_account == "2"):
             type('Loading Account Setup...')
-            sleep(1)
+            sleep(0.5)
             create_account()
             break
         else:
@@ -81,40 +81,32 @@ def login():
     """
     customers_worksheet = SHEET.worksheet('customers')
     
-    type('Please enter your username to login')
-    submitted_username = input('')
-    # Check if eneter username is in database
-    stored_username = customers_worksheet.find(submitted_username, in_column=1)
-    
-    # Check PIN if username in database or ask for valid username
-    if stored_username:
-        # Get PIN associated with username
-        stored_pin = customers_worksheet.cell(stored_username.row, stored_username.col + 1).value
-        # Create user object to store username and pin
-        user = User(submitted_username, stored_pin)
-        type(f'Welcome {user.username}')
-        # Check PIN
-        pin_matched = False
-        while not pin_matched:
-            submitted_pin = input('Please enter your PIN: ')
-            if (submitted_pin == user.pin):
-                pin_matched = True
-                type('PIN correct, loading account details...')
-            else:
-                type('Incorrect PIN, please try again')
-    else:
-        type('User not found, pleasse try again.')  
-    
     while True:
-        user_entered_pin = input('')
-        database_pin = SHEET.worksheet('customers')
-        if user_entered_pin == database_pin:
-            type('Correct PIN, loading account details.')
-            return
-        elif (user_entered_pin == 0):
-            return False
+        type('Please enter your username to login')
+        submitted_username = input('')
+        # Check if username is in database
+        stored_username = customers_worksheet.find(submitted_username, in_column=1)
+        
+        # Check PIN if username in database or ask for valid username
+        if stored_username:
+            # Get PIN associated with username
+            stored_pin = customers_worksheet.cell(stored_username.row, stored_username.col + 1).value
+            # Create user object to store username and pin
+            user = User(submitted_username, stored_pin)
+            type(f'Welcome {user.username}')
+            # Check PIN
+            pin_matched = False
+            while not pin_matched:
+                submitted_pin = input('Please enter your PIN: ')
+                if (submitted_pin == user.pin):
+                    pin_matched = True
+                    type('PIN correct, loading account details...')
+                    return user
+                else:
+                    type('Incorrect PIN, please try again')
         else:
-            type('Incorrect PIN, please try again')
+            type('User not found, please try again.')  
+    
     
 def create_account():
     """
@@ -125,7 +117,9 @@ def create_account():
     customer_database = SHEET.worksheet('customers')
     while True:
         username = input('')
-        if (len(username) < 16) and (len(username) > 4):
+        if customer_database.find(username, in_column=1) is not None:
+            print('Username not avalilable, please choose a different one.')
+        elif (len(username) < 16) and (len(username) > 4):
             print('Username valid')
             type('Creating account...')
             pin = generate_pin()
