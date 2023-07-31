@@ -130,11 +130,12 @@ Happy coding!
 - I needed to return the pin after it was being crreated for it to be sent to the databse.
 - Can create multiple usernames of the same value. Created an if statement inside the create_account function.
 - If incorrect username eneterd in login, on second attempt it responds 'Incorect PIN'. Removed unnessisary code after function that was causing part of the function to run again.
+- Whitespace can be used in username. Added in an extra elif statement to the create_account function.
 
 
 #### Unsolved Bugs
 
-- Whitespace can be used in username.
+
 
 [Back to top](<#contents>)
 

@@ -117,8 +117,9 @@ def login():
     
 def create_account():
     """
-    Create an account with a user generate username between 5 and 15 characters long,
-    A randomly generated 4 digit PIN and add the information to the database.
+    Create an account with a user generate username between 5 and 15 characters long
+    with no white space and 
+    A randomly generated 4 digit PIN and adds the information to the database.
     """
     print('Please select a username between 5 and 15 characters long.')
     customer_database = SHEET.worksheet('customers')
@@ -127,9 +128,12 @@ def create_account():
         # Don't allow repeat usernames
         if customer_database.find(username, in_column=1) is not None:
             print(Fore.GREEN + 'Username not avalilable, please choose a different one.')
+        # Check for whitespace
+        elif (any(char.isspace() for char in username)):
+            print(Fore.GREEN + f'{username} is not valid. Please pick a username without any spaces.') 
         # Make username between 5 and 15 characters
         elif (len(username) < 16) and (len(username) > 4):
-            print(Fore.GREEN + 'Username valid')
+            print(Fore.GREEN + f'{username} is a valid username')
             type('Creating account...')
             # Create a PIN
             pin = generate_pin()
@@ -143,7 +147,7 @@ def create_account():
             # Run login function
             login()
         else:
-            print(Fore.GREEN + 'Invalid username. Please select a username between 5 and 10 characters long.')
+            print(Fore.GREEN + f'{username} is not valid. Please select a username between 5 and 10 characters long.')
 
 def generate_pin():
     pin = random.randint(1000,9999)
