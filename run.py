@@ -163,21 +163,62 @@ def create_account():
 
 
 def generate_pin():
+    """
+    Create a random 4 digit PIN
+    """
     pin = random.randint(1000, 9999)
     return pin
 
 
 def account_home(username, pin):
+    """
+    Access to the accounts functions:
+    Check balance, add/withdraw funds and view PIN.
+    """
     clear()
     print_logo()
     type(f'Welcome {username}')
-    type('Please select one of the following options:')
+    print('Please select one of the following options:')
+    print('')
     print('1: Check Account Blance')
     print('2: Deposit Funds')
     print('3: Withdraw Funds')
     print('4: View PIN')
+    print('')
+    print('0: Exit')
+
+
+    selection_loop = True
+    while selection_loop:
+        user_selection = input(Fore.WHITE + '')
+        if (user_selection == '1'):
+            check_account_balance(username, pin)
+        elif (user_selection == '2'):
+            print('deposit funds')
+        elif (user_selection == '3'):
+            print('withdraw funds')
+        elif (user_selection == '4'):
+            print('View PIN')
+        elif (user_selection == '0'):
+            selection_loop = False
+            return
+        else:
+            print('Not a valid selection')
+
+
+def check_account_balance(username, pin):
+    clear()
+    print_logo()
+    type('Checking account balance...')
+    sleep(0.5)
+    
     print(username)
     print(pin)
+    
+    print('press 0 to go back to account home')
+    user_home = input(Fore.WHITE + '')
+    if (user_home == '0'):
+        account_home(username, pin)
 
 
 def main():
@@ -186,3 +227,4 @@ def main():
 
 
 main()
+# check_account_balance('Daniel', 3475)
