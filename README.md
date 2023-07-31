@@ -142,7 +142,8 @@ Happy coding!
 ### Validator Testing
 
 - PEP8
-    - No erors were returned from [PEP8online.com](https://pep8online.com)
+    - No errors were returned from [PEP8](https://pep8ci.herokuapp.com/)
+    
 
 ### Peer Testing
 
