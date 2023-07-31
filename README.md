@@ -129,13 +129,12 @@ Happy coding!
 - In the create_account function an infinate loop was created due to the user inout being before the loop.
 - I needed to return the pin after it was being crreated for it to be sent to the databse.
 - Can create multiple usernames of the same value. Created an if statement inside the create_account function.
+- If incorrect username eneterd in login, on second attempt it responds 'Incorect PIN'. Removed unnessisary code after function that was causing part of the function to run again.
 
 
 #### Unsolved Bugs
 
 - Whitespace can be used in username.
-- If incorrect username eneterd in login, on second attempt it responds 'Incorect PIN'
-
 
 [Back to top](<#contents>)
 

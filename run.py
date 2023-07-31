@@ -49,31 +49,37 @@ def welcome():
     """
     The welcome sequence asking if you would like to login or create an account.
     """
+    # Display logo
     LOGO = pyfiglet.figlet_format('Lumos Online Banking')
     print(Fore.GREEN + LOGO)
     sleep(0.5)
+    # Welcome message
     type('Welcome to Lumos Online Banking')
     type('Would you like to login or create an account?')
     print('1: Login')
     print('2: Create an account')
     while True:
-        existing_account = input('')
+        existing_account = input(Fore.WHITE + '')
         if (existing_account == "1"):
-            type("Loading Login Page...")
+            type(Fore.GREEN + "Loading Login Page...")
             sleep(0.5)
             login()
             break
         elif (existing_account == "2"):
-            type('Loading Account Setup...')
+            type(Fore.GREEN + 'Loading Account Setup...')
             sleep(0.5)
             create_account()
             break
         else:
             print('Please enter 1 to Login or 2 to create an account')
+
 class User:
-        def __init__(self, username, pin):
-            self.username = username
-            self.pin = pin
+    """
+    Creates a user class to store user information.
+    """
+    def __init__(self, username, pin):
+        self.username = username
+        self.pin = pin
             
 def login():
     """
@@ -82,8 +88,8 @@ def login():
     customers_worksheet = SHEET.worksheet('customers')
     
     while True:
-        type('Please enter your username to login')
-        submitted_username = input('')
+        type(Fore.GREEN + 'Please enter your username to login')
+        submitted_username = input(Fore.WHITE + '')
         # Check if username is in database
         stored_username = customers_worksheet.find(submitted_username, in_column=1)
         
@@ -93,19 +99,20 @@ def login():
             stored_pin = customers_worksheet.cell(stored_username.row, stored_username.col + 1).value
             # Create user object to store username and pin
             user = User(submitted_username, stored_pin)
-            type(f'Welcome {user.username}')
+            type(Fore.GREEN + f'Welcome {user.username}')
             # Check PIN
             pin_matched = False
             while not pin_matched:
-                submitted_pin = input('Please enter your PIN: ')
+                print('Please enter your PIN: ')
+                submitted_pin = input(Fore.WHITE + '')
                 if (submitted_pin == user.pin):
                     pin_matched = True
-                    type('PIN correct, loading account details...')
+                    type(Fore.GREEN + 'PIN correct, loading account details...')
                     return user
                 else:
-                    type('Incorrect PIN, please try again')
+                    type(Fore.GREEN + 'Incorrect PIN, please try again')
         else:
-            type('User not found, please try again.')  
+            type(Fore.GREEN + 'User not found, please try again.')  
     
     
 def create_account():
@@ -116,22 +123,27 @@ def create_account():
     print('Please select a username between 5 and 15 characters long.')
     customer_database = SHEET.worksheet('customers')
     while True:
-        username = input('')
+        username = input(Fore.WHITE + '')
+        # Don't allow repeat usernames
         if customer_database.find(username, in_column=1) is not None:
-            print('Username not avalilable, please choose a different one.')
+            print(Fore.GREEN + 'Username not avalilable, please choose a different one.')
+        # Make username between 5 and 15 characters
         elif (len(username) < 16) and (len(username) > 4):
-            print('Username valid')
+            print(Fore.GREEN + 'Username valid')
             type('Creating account...')
+            # Create a PIN
             pin = generate_pin()
+            # Save user information to database
             created_user = User(username, pin)
             user_information = [created_user.username, created_user.pin]
             customer_database.append_row(user_information)
-            print('Account created.')
+            # Tell user PIN
+            print(Fore.BLUE + 'Account created.')
             print(f'Your PIN is: {created_user.pin}')
             # Run login function
             login()
         else:
-            print('Invalid username. Please select a username between 5 and 10 characters long.')
+            print(Fore.GREEN + 'Invalid username. Please select a username between 5 and 10 characters long.')
 
 def generate_pin():
     pin = random.randint(1000,9999)
