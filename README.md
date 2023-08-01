@@ -134,6 +134,7 @@ Happy coding!
 - Gspread was showing a error message when I tried to push data to a new spreadsheet insid the generate_worksheet function, using append.rows fixed it.
 - The loop in account_home as not ending to I added break to end it when user selects 0. I needed to add a break to the loop in account_home as it was still running from the first time so needed to be closed twice.
 - After creating an account and loggin in, the user has to press any selection twice. To fix this I ran the account_home function instead of the login function.
+- Deposit function won’t exit on 0, ‘currency’ was referenced before being defined. The type function containing the currency variable was moved into the try statement.
 
 #### Unsolved Bugs
 

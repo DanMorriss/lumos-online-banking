@@ -268,8 +268,8 @@ def deposit_funds(username, pin):
     last_balance_info = user_data[-1]
     last_balance = turn_to_currency(last_balance_info[-1])
 
+    print('0: Exit')
     type('How much would you like to deposit?')
-    print('Enter 0 to exit')
 
     while True:
         deposit_ammount = input(Fore.WHITE + '£')
@@ -281,6 +281,7 @@ def deposit_funds(username, pin):
 
         # Deposit into account
         try:
+            type(Fore.GREEN + f'Depositing £{currency}')
             currency = turn_to_currency(deposit_ammount)
             deposit = [currency, 0, last_balance + currency]
             user_sheet.append_row(deposit)
@@ -289,10 +290,10 @@ def deposit_funds(username, pin):
         # Tell user to enetr a valid number.
         except ValueError:
             print(Fore.RED + f'{deposit_ammount} is not a valid ammount, please try again.')
-            print('Or enter 0 to exit')
+            print('0: Exit')
 
-    type(Fore.GREEN + f'Depositing £{currency}')
-    sleep(1.5)
+    
+    sleep(1)
     account_home(username, pin)
 
 
@@ -318,7 +319,7 @@ def withdraw_funds(username, pin):
 
     type(Fore.BLUE + f'Your balance is £{last_balance}')
     type(Fore.GREEN + 'How much would you like to withdraw?')
-    print('Enter 0 to exit')
+    print('0: Exit')
 
     while True:
         withdraw_ammount = input(Fore.WHITE + '£')
@@ -347,7 +348,7 @@ def withdraw_funds(username, pin):
         # Tell user to enetr a valid number.
         except ValueError:
             print(Fore.RED + f'{withdraw_ammount} is not a valid ammount, please try again.')
-            print(Fore.GREEN + 'Enter 0 to exit')
+            print(Fore.GREEN + '0: Exit')
 
     sleep(1.5)
     account_home(username, pin)
