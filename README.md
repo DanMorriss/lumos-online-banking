@@ -132,7 +132,7 @@ Happy coding!
 - If incorrect username eneterd in login, on second attempt it responds 'Incorect PIN'. Removed unnessisary code after function that was causing part of the function to run again.
 - Whitespace can be used in username. Added in an extra elif statement to the create_account function.
 - Gspread was showing a error message when I tried to push data to a new spreadsheet insid the generate_worksheet function, using append.rows fixed it.
-- The loop in account_home as not ending to I added break to end it when user selects 0.
+- The loop in account_home as not ending to I added break to end it when user selects 0. I needed to add a break to the loop in account_home as it was still running from the first time so needed to be closed twice.
 
 #### Unsolved Bugs
 
@@ -207,6 +207,7 @@ To clone the project on GitHub:
 - [time](https://www.programiz.com/python-programming/time/sleep) for the sleep fuction.
 - [colorama](https://pypi.org/project/colorama/) to color the text in the terminal.
 - [os](https://www.geeksforgeeks.org/clear-screen-python/) to clear the terminal.
+- [Tabulate](https://pypi.org/project/tabulate/)
 
 ### Code Used
 

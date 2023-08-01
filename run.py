@@ -15,6 +15,8 @@ import os
 import random
 # To test if something is a number
 from math import isnan
+# To create tables
+from tabulate import tabulate
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -212,13 +214,16 @@ def account_home(username, pin):
         user_selection = input(Fore.WHITE + '')
         if (user_selection == '1'):
             check_account_balance(username, pin)
+            break
         elif (user_selection == '2'):
             deposit_funds(username, pin)
             break
         elif (user_selection == '3'):
             print('withdraw funds')
+            break
         elif (user_selection == '4'):
             print('View PIN')
+            break
         elif (user_selection == '0'):
             selection_loop = False
             break
@@ -229,11 +234,18 @@ def account_home(username, pin):
 def check_account_balance(username, pin):
     print_logo()
     type('Checking account balance...')
+    print('')
     sleep(0.5)
+
+    user_sheet = SHEET.worksheet(username)
+    user_data = user_sheet.get_all_values()
+    last_balance_info = user_data[-1]
+    last_balance = turn_to_currency(last_balance_info[-1])
     
-    print(username)
-    print(pin)
-    
+    print(tabulate(user_data, headers='firstrow', tablefmt='github'))
+    print('')
+    type(Fore.BLUE + f'Current balance: £{last_balance}')
+    print(Fore.GREEN + '')
     print('press 0 to go back to account home')
     user_home = input(Fore.WHITE + '')
     if (user_home == '0'):
