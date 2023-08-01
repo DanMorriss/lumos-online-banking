@@ -138,7 +138,12 @@ Happy coding!
 
 #### Unsolved Bugs
 
-
+- Add return after deposit complete
+- Add error message if go back home not correct (it pushes you out of the programme)
+- Add empty line after displaying balance on withdraw screen
+- Add press enter to go home after withdraw funds
+- Add wait after “welcome user” in account home. 0.5 seconds.
+- Add in use PIN for withdraw function.
 
 [Back to top](<#contents>)
 

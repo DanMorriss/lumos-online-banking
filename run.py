@@ -226,7 +226,7 @@ def account_home(username, pin):
             withdraw_funds(username, pin)
             break
         elif (user_selection == '4'):
-            print('View PIN')
+            view_pin(username, pin)
             break
         elif (user_selection == '0'):
             selection_loop = False
@@ -352,6 +352,21 @@ def withdraw_funds(username, pin):
 
     sleep(1.5)
     account_home(username, pin)
+
+
+def view_pin(username, pin):
+    """
+    Showes the user their PIN
+    """
+    print_logo()
+    print('0: Exit')
+    print(Fore.BLUE + '')
+    data = [['Username', 'PIN'], [username, pin]]
+    print(tabulate(data, headers='firstrow', tablefmt='github'))
+    print('')
+    input(Fore.WHITE + '')
+    sleep(1)
+    account_home(username, pin)    
 
 
 def main():
