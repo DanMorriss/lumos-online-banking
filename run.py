@@ -83,7 +83,7 @@ def welcome():
             create_account()
             break
         else:
-            print('Please enter 1 to Login or 2 to create an account')
+            print(Fore.RED + 'Please enter 1 to Login or 2 to create an account')
 
 
 class User:
@@ -130,7 +130,7 @@ def login():
                 else:
                     print(Fore.RED + 'Incorrect PIN, please try again')
         else:
-            print(Fore.GREEN + 'User not found, please try again.')
+            print(Fore.RED + 'User not found, please try again.')
 
 
 def create_account():
@@ -146,10 +146,10 @@ def create_account():
         username = input(Fore.WHITE + '')
         # Don't allow repeat usernames
         if customer_database.find(username, in_column=1) is not None:
-            print(Fore.GREEN + 'Username unavalible, try again.')
+            print(Fore.RED + 'Username unavalible, try again.')
         # Check for whitespace
         elif (any(char.isspace() for char in username)):
-            print(Fore.GREEN + f'{username} not valid, containes whitespace.')
+            print(Fore.RED + f'{username} not valid, containes whitespace.')
         # Make username between 5 and 15 characters
         elif (len(username) < 16) and (len(username) > 4):
             print(Fore.GREEN + f'{username} is a valid username')
@@ -169,11 +169,11 @@ def create_account():
             account_loop = False
             
             print('Press enter to go to account home')
-            user_confirm = input('')
+            input('')
             account_home(created_user.username, created_user.pin)
         else:
-            print(Fore.GREEN + f'{username} is not valid.')
-            print('Select a username between 5 and 10 characters long.')
+            print(Fore.RED + f'{username} is not valid.')
+            print(Fore.GREEN + 'Select a username between 5 and 10 characters long.')
 
 
 def generate_pin():
@@ -232,7 +232,7 @@ def account_home(username, pin):
             selection_loop = False
             break
         else:
-            print('Not a valid selection')
+            print(Fore.RED + 'Not a valid selection')
 
 
 def check_account_balance(username, pin):
@@ -288,7 +288,7 @@ def deposit_funds(username, pin):
 
         # Tell user to enetr a valid number.
         except ValueError:
-            print(f'{deposit_ammount} is not a valid ammount, please try again.')
+            print(Fore.RED + f'{deposit_ammount} is not a valid ammount, please try again.')
             print('Or enter 0 to exit')
 
     type(Fore.GREEN + f'Depositing £{currency}')
@@ -346,7 +346,7 @@ def withdraw_funds(username, pin):
 
         # Tell user to enetr a valid number.
         except ValueError:
-            print(f'{withdraw_ammount} is not a valid ammount, please try again.')
+            print(Fore.RED + f'{withdraw_ammount} is not a valid ammount, please try again.')
             print(Fore.GREEN + 'Enter 0 to exit')
 
     sleep(1.5)
