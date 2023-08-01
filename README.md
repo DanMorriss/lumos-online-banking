@@ -207,7 +207,7 @@ To clone the project on GitHub:
 - [time](https://www.programiz.com/python-programming/time/sleep) for the sleep fuction.
 - [colorama](https://pypi.org/project/colorama/) to color the text in the terminal.
 - [os](https://www.geeksforgeeks.org/clear-screen-python/) to clear the terminal.
-- [Tabulate](https://pypi.org/project/tabulate/)
+- [Tabulate](https://pypi.org/project/tabulate/) to put data in a table.
 
 ### Code Used
 

@@ -219,7 +219,7 @@ def account_home(username, pin):
             deposit_funds(username, pin)
             break
         elif (user_selection == '3'):
-            print('withdraw funds')
+            withdraw_funds(username, pin)
             break
         elif (user_selection == '4'):
             print('View PIN')
@@ -298,6 +298,56 @@ def turn_to_currency(ammount):
     """
     currency = round(float(ammount), 2)
     return currency
+
+
+def withdraw_funds(username, pin):
+    """
+    Withdraws money from the users account and calculates the new balance.
+    """
+    print_logo()
+
+    # Get the previous balance
+    user_sheet = SHEET.worksheet(username)
+    user_data = user_sheet.get_all_values()
+    last_balance_info = user_data[-1]
+    last_balance = turn_to_currency(last_balance_info[-1])
+
+    type(Fore.BLUE + f'Your balance is £{last_balance}')
+    type(Fore.GREEN + 'How much would you like to withdraw?')
+    print('Enter 0 to exit')
+
+    while True:
+        withdraw_ammount = input(Fore.WHITE + '£')
+        
+        # Give the option to exit
+        if withdraw_ammount == '0':
+            # account_home(username, pin)
+            break
+
+        try:
+            currency = turn_to_currency(withdraw_ammount)
+            if currency > last_balance:
+                print(Fore.RED + 'Insufficent funds')
+                print(Fore.GREEN + 'Please select another ammount')
+            elif currency < 0:
+                print(Fore.RED + 'Withdraw ammount cannot be negative')
+                print(Fore.GREEN + 'Please select another ammount')
+            else:
+                deposit = [0, currency, last_balance - currency]
+                type(Fore.GREEN + f'Withdrawing £{currency}')
+                user_sheet.append_row(deposit)
+                print('Success')
+                sleep(0.5)
+                break
+
+        # Tell user to enetr a valid number.
+        except ValueError:
+            print(f'{withdraw_ammount} is not a valid ammount, please try again.')
+            print(Fore.GREEN + 'Enter 0 to exit')
+
+    sleep(1.5)
+    account_home(username, pin)
+
 
 def main():
     welcome()
