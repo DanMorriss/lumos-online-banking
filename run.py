@@ -152,8 +152,6 @@ def create_account():
             user_information = [created_user.username, created_user.pin]
             customer_database.append_row(user_information)
             generate_worksheet(username)
-            # Print logo as termianl was cleared in generate_worksheet
-            print_logo()
             # Tell user PIN
             print(Fore.BLUE + 'Account created.')
             print(f'Your username is: {created_user.username}')
@@ -176,11 +174,8 @@ def generate_pin():
 
 def generate_worksheet(username):
     new_sheet = SHEET.add_worksheet(title=username, rows=100, cols=3)
-    new_sheet.update('A1', 'Deposit')
-    new_sheet.update('B1', 'Withdraw')
-    new_sheet.update('C1', 'Balance')
-    # Clear termianl to emove gspread update warning.
-    clear()
+    headings = ['Deposit', 'Withdraw', 'Balance']
+    new_sheet.append_row(headings)
 
 
 def account_home(username, pin):
