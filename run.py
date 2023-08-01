@@ -167,7 +167,10 @@ def create_account():
             print(f'Your PIN is: {created_user.pin}')
             # Run login function
             account_loop = False
-            login()
+            
+            print('Press enter to go to account home')
+            user_confirm = input('')
+            account_home(created_user.username, created_user.pin)
         else:
             print(Fore.GREEN + f'{username} is not valid.')
             print('Select a username between 5 and 10 characters long.')
