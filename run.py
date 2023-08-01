@@ -69,7 +69,7 @@ def welcome():
     print_logo()
     # Welcome message
     type('Welcome to Lumos Online Banking')
-    type('Would you like to login or create an account?')
+    print('Would you like to login or create an account?')
     print('1: Login')
     print('2: Create an account')
     while True:
@@ -103,7 +103,7 @@ def login():
 
     login_loop = True
     while login_loop:
-        type(Fore.GREEN + 'Please enter your username to login')
+        print(Fore.GREEN + 'Please enter your username to login')
         submitted_username = input(Fore.WHITE + '')
         # Check if username is in database
         stored_un = cust_ws.find(submitted_username, in_column=1)
@@ -114,7 +114,7 @@ def login():
             stored_pin = cust_ws.cell(stored_un.row, stored_un.col + 1).value
             # Create user object to store username and pin
             user = User(submitted_username, stored_pin)
-            type(Fore.GREEN + f'Welcome {user.username}')
+            # type(Fore.GREEN + f'Welcome {user.username}')
             # Check PIN
             pin_matched = False
             while not pin_matched:
@@ -122,12 +122,13 @@ def login():
                 submitted_pin = input(Fore.WHITE + '')
                 if (submitted_pin == user.pin):
                     pin_matched = True
-                    type(Fore.GREEN + 'PIN correct, loading account details..')
+                    print(Fore.GREEN + 'PIN correct')
+                    type('Loading account details...')
                     sleep(1)
                     login_loop = False
                     account_home(user.username, user.pin)
                 else:
-                    print(Fore.GREEN + 'Incorrect PIN, please try again')
+                    print(Fore.RED + 'Incorrect PIN, please try again')
         else:
             print(Fore.GREEN + 'User not found, please try again.')
 
