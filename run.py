@@ -13,6 +13,8 @@ from colorama import Fore, Back
 import os
 # Random number
 import random
+# To test if something is a number
+from math import isnan
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -195,7 +197,7 @@ def account_home(username, pin):
     type(f'Welcome {username}')
     print('Please select one of the following options:')
     print('')
-    print('1: Check Account Blance')
+    print('1: Check Account Balance')
     print('2: Deposit Funds')
     print('3: Withdraw Funds')
     print('4: View PIN')
@@ -209,14 +211,14 @@ def account_home(username, pin):
         if (user_selection == '1'):
             check_account_balance(username, pin)
         elif (user_selection == '2'):
-            print('deposit funds')
+            deposit_funds(username, pin)
         elif (user_selection == '3'):
             print('withdraw funds')
         elif (user_selection == '4'):
             print('View PIN')
         elif (user_selection == '0'):
             selection_loop = False
-            return
+            break
         else:
             print('Not a valid selection')
 
@@ -236,8 +238,54 @@ def check_account_balance(username, pin):
 
 
 def deposit_funds(username, pin):
+    """
+    Deposits money into a users account and calculates the new balance.
+    """
     print_logo()
-    print( username, pin)
+
+    # Get the previous balance
+    user_sheet = SHEET.worksheet(username)
+    user_data = user_sheet.get_all_values()
+    last_balance_info = user_data[-1]
+    last_balance = turn_to_currency(last_balance_info[-1])
+
+    type('How much would you like to deposit?')
+    print('Enter 0 to exit')
+
+    error_loop = True
+    while (error_loop):
+        deposit_ammount = input(Fore.WHITE + '£')
+        
+        # Give the option to exit
+        if deposit_ammount == '0':
+            account_home(username, pin)
+
+        # Deposit into account
+        try:
+            currency = turn_to_currency(deposit_ammount)
+            deposit = [currency, 0, last_balance + currency]
+            user_sheet.append_row(deposit)
+            error_loop = False
+
+        # Tell user to enetr a valid number.
+        except ValueError:
+            print(f'{deposit_ammount} is not a valid ammount, please try again.')
+            print('Or enter 0 to exit')
+
+    type(Fore.GREEN + f'Depositing £{currency}')
+    sleep(1)
+    print('Enter 0 to exit')
+    home = input('')
+    if (home == '0'):
+        account_home(username, pin)
+
+
+def turn_to_currency(ammount):
+    """
+    Turns a number into a float with 2 decimal places.
+    """
+    currency = round(float(ammount), 2)
+    return currency
 
 def main():
     welcome()
