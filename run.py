@@ -185,7 +185,9 @@ def generate_worksheet(username):
     """
     new_sheet = SHEET.add_worksheet(title=username, rows=100, cols=3)
     headings = ['Deposit', 'Withdraw', 'Balance']
+    starting_balance = [0, 0, 0]
     new_sheet.append_row(headings)
+    new_sheet.append_row(starting_balance)
 
 
 def account_home(username, pin):
