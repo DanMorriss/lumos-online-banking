@@ -214,6 +214,7 @@ def account_home(username, pin):
             check_account_balance(username, pin)
         elif (user_selection == '2'):
             deposit_funds(username, pin)
+            break
         elif (user_selection == '3'):
             print('withdraw funds')
         elif (user_selection == '4'):
@@ -254,20 +255,20 @@ def deposit_funds(username, pin):
     type('How much would you like to deposit?')
     print('Enter 0 to exit')
 
-    error_loop = True
-    while (error_loop):
+    while True:
         deposit_ammount = input(Fore.WHITE + '£')
         
         # Give the option to exit
         if deposit_ammount == '0':
-            account_home(username, pin)
+            # account_home(username, pin)
+            break
 
         # Deposit into account
         try:
             currency = turn_to_currency(deposit_ammount)
             deposit = [currency, 0, last_balance + currency]
             user_sheet.append_row(deposit)
-            error_loop = False
+            break
 
         # Tell user to enetr a valid number.
         except ValueError:
@@ -275,11 +276,8 @@ def deposit_funds(username, pin):
             print('Or enter 0 to exit')
 
     type(Fore.GREEN + f'Depositing £{currency}')
-    sleep(1)
-    print('Enter 0 to exit')
-    home = input('')
-    if (home == '0'):
-        account_home(username, pin)
+    sleep(1.5)
+    account_home(username, pin)
 
 
 def turn_to_currency(ammount):

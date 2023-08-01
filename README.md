@@ -132,7 +132,7 @@ Happy coding!
 - If incorrect username eneterd in login, on second attempt it responds 'Incorect PIN'. Removed unnessisary code after function that was causing part of the function to run again.
 - Whitespace can be used in username. Added in an extra elif statement to the create_account function.
 - Gspread was showing a error message when I tried to push data to a new spreadsheet insid the generate_worksheet function, using append.rows fixed it.
-
+- The loop in account_home as not ending to I added break to end it when user selects 0.
 
 #### Unsolved Bugs
 
