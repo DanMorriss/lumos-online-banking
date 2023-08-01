@@ -49,6 +49,10 @@ def clear():
 
 
 def print_logo():
+    """
+    Prints to banks logo in green to a blank termianl.
+    """
+    clear()
     LOGO = pyfiglet.figlet_format('Lumos Online Banking')
     print(Fore.GREEN + LOGO)
 
@@ -173,6 +177,10 @@ def generate_pin():
 
 
 def generate_worksheet(username):
+    """
+    Create a new worksheet using the username and add the headings:
+    Deposit, Withdraw and Balance.
+    """
     new_sheet = SHEET.add_worksheet(title=username, rows=100, cols=3)
     headings = ['Deposit', 'Withdraw', 'Balance']
     new_sheet.append_row(headings)
@@ -183,7 +191,6 @@ def account_home(username, pin):
     Access to the accounts functions:
     Check balance, add/withdraw funds and view PIN.
     """
-    clear()
     print_logo()
     type(f'Welcome {username}')
     print('Please select one of the following options:')
@@ -215,7 +222,6 @@ def account_home(username, pin):
 
 
 def check_account_balance(username, pin):
-    clear()
     print_logo()
     type('Checking account balance...')
     sleep(0.5)
@@ -229,8 +235,11 @@ def check_account_balance(username, pin):
         account_home(username, pin)
 
 
+def deposit_funds(username, pin):
+    print_logo()
+    print( username, pin)
+
 def main():
-    clear()
     welcome()
 
 

@@ -131,6 +131,7 @@ Happy coding!
 - Can create multiple usernames of the same value. Created an if statement inside the create_account function.
 - If incorrect username eneterd in login, on second attempt it responds 'Incorect PIN'. Removed unnessisary code after function that was causing part of the function to run again.
 - Whitespace can be used in username. Added in an extra elif statement to the create_account function.
+- Gspread was showing a error message when I tried to push data to a new spreadsheet insid the generate_worksheet function, using append.rows fixed it.
 
 
 #### Unsolved Bugs
