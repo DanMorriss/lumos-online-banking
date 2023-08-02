@@ -258,8 +258,7 @@ def check_account_balance(username, pin):
     type(Fore.BLUE + f'Current balance: £{last_balance}')
     print('')
     user_home = input(Fore.WHITE + '>')
-    if (user_home == '0'):
-        account_home(username, pin)
+    account_home(username, pin)
 
 
 def deposit_funds(username, pin):
