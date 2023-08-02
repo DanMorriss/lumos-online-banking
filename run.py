@@ -61,15 +61,22 @@ def print_logo():
     print(Fore.GREEN + LOGO)
 
 
+def exit():
+    """
+    Prints the exit statement at the top of each function page.
+    """
+    print('[Enter 0 to Exit]')
+    print('')
+
 def welcome():
     """
     The welcome sequence asking if you would like to login or create an account
     """
-    # Display logo
     print_logo()
-    # Welcome message
     type('Welcome to Lumos Online Banking')
+    print('')
     print('Would you like to login or create an account?')
+    print('')
     print('1: Login')
     print('2: Create an account')
     while True:
@@ -202,6 +209,7 @@ def account_home(username, pin):
     Check balance, add/withdraw funds and view PIN.
     """
     print_logo()
+    exit()
     type(f'Welcome {username}')
     print('Please select one of the following options:')
     print('')
@@ -210,7 +218,6 @@ def account_home(username, pin):
     print('3: Withdraw Funds')
     print('4: View PIN')
     print('')
-    print('0: Exit')
 
 
     selection_loop = True
@@ -237,6 +244,7 @@ def account_home(username, pin):
 
 def check_account_balance(username, pin):
     print_logo()
+    exit()
     type('Checking account balance...')
     print('')
     sleep(0.5)
@@ -249,8 +257,7 @@ def check_account_balance(username, pin):
     print(tabulate(user_data, headers='firstrow', tablefmt='github'))
     print('')
     type(Fore.BLUE + f'Current balance: £{last_balance}')
-    print(Fore.GREEN + '')
-    print('press 0 to go back to account home')
+    print('')
     user_home = input(Fore.WHITE + '')
     if (user_home == '0'):
         account_home(username, pin)
@@ -268,7 +275,7 @@ def deposit_funds(username, pin):
     last_balance_info = user_data[-1]
     last_balance = turn_to_currency(last_balance_info[-1])
 
-    print('0: Exit')
+    exit()
     type('How much would you like to deposit?')
 
     while True:
@@ -312,6 +319,7 @@ def withdraw_funds(username, pin):
     Withdraws money from the users account and calculates the new balance.
     """
     print_logo()
+    exit()
 
     # Get the previous balance
     user_sheet = SHEET.worksheet(username)
@@ -320,8 +328,9 @@ def withdraw_funds(username, pin):
     last_balance = turn_to_currency(last_balance_info[-1])
 
     type(Fore.BLUE + f'Your balance is £{last_balance}')
+    print('')
     type(Fore.GREEN + 'How much would you like to withdraw?')
-    print('0: Exit')
+    print('')
 
     while True:
         withdraw_ammount = input(Fore.WHITE + '£')
@@ -361,7 +370,7 @@ def view_pin(username, pin):
     Showes the user their PIN
     """
     print_logo()
-    print('0: Exit')
+    print('Enter 0: Exit')
     print(Fore.BLUE + '')
     data = [['Username', 'PIN'], [username, pin]]
     print(tabulate(data, headers='firstrow', tablefmt='github'))
