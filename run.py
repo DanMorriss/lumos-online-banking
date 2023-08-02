@@ -349,16 +349,14 @@ def withdraw_funds(username, pin):
                 deposit = [0, currency, last_balance - currency]
                 type(Fore.GREEN + f'Withdrawing £{currency}')
                 user_sheet.append_row(deposit)
-                print('Success')
-                sleep(0.5)
+                type('Success, returning to home')
+                sleep(1)
                 break
 
         # Tell user to enetr a valid number.
         except ValueError:
             print(Fore.RED + f'{withdraw_ammount} is not a valid ammount, please try again.')
-            print(Fore.GREEN + '0: Exit')
 
-    sleep(1.5)
     account_home(username, pin)
 
 
