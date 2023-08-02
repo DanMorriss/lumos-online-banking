@@ -1,91 +1,63 @@
 [Live Site](https://lumos-online-banking-698c21a030ae.herokuapp.com/)
 
-
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
 # Lumos Online Banking
 
 ![Responsive mockup]()
 
 ## Contents
 
-* [**User Experience (UX)**](<#user-experience-ux>)
-    * [User Stories](<#user-stories>)
-        * [First Time Visitor Goals](<#first-time-visitor-goals>)
-        * [Returning Visitor Goals](<#returning-visitor-goals>)
-        * [Frequent Visitor Goals](<#frequent-visitor-goals>)
-    * [Wireframes](<#wireframes>)
-        * [Home](<#home>)
-        * [Game Screen](<#game-screen>)
-        * [Difficulty](<#difficulty>)
-        * [High Scores](<#high-scores>)
-* [**Design**](<#design>)
-    * [Color Scheme](<#color-scheme>)
-    * [Typography](<#typography>)
 * [**Features**](#features)
     * [Existing Features](<#existing-features>)
-        * [Homepage](<#homepage>)
-        * [The Rules](<#the-rules>)
-        * [Enter a Username](<#enter-a-username>)
-        * [Choose a Difficulty](<#choose-a-difficlty>)
-        * [Answer the Questions](<#answer-the-questions>)
-        * [High Scores](<#high-scores>)
-        * [Sound](<#sound>)
-        * [Close the game](<#close-the-game>)
-    * [Accesibility](<#accesibility>)
+        * [Login](<#login>)
+        * [Create Account](<#create-account>)
+            * [Generate PIN](<#generate-pin>)
+            * [Add User to Database](<#add-user-to-database>)
+        * [Check Account Balance](<#Check-Account-Balance>)
+        * [Deposit Funds](<#Deposit-Funds>)
+        * [Withdraw Funds](<#Withdraw-Funds>)
+        * [View PIN](<#View-PIN>)
+        * [Logout](<#Logout>)
     * [Future Features](<#future-features>)
-* [**Technologies Used**](<#technologies-used>)
-    * [Languages](<#languages>)
+* [**Data Model**](<#data-model>)
+* [**Flowchart**](<#flowchart>)
 * [**Testing**](<#testing>)
-    * [Code Validation](<>)
-        * [W3C HTML Checker](<#w3c-html-checker>)
-        * [W3C CSS Checker](<#w3c-css-checker>)
-        * [Lighthouse](<#lighthouse>)
-    * [Responsiveness Test](<#responsiveness-test>)
-    * [Browser Compatibility](<#browser-compatibility>)
+    * [Bugs](<#bugs>)
+        * [Solved Bugs](<#solved-bugs>)
+        * [Unsolved Bugs](<#unsolved-bugs>)
+    * [Validator Testing](<#validator-testing>)
     * [Peer Testing](<#peer-testing>)
-* [**Bugs**](<#bugs>)
-    * [Solved Bugs](<#solved-bugs>)
-    * [Unsolved Bugs](<#unsolved-bugs>)
 * [**Deployment**](<#deployment>)
+    * [Heroku Deployment](<#heroku-deployment>)
+    * [To Fork the Project](<#to-fork-the-project>)
+    * [To Clone the Project](<#to-clone-the-project>)
 * [**Credits**](<#credits>)
     * [Resources](<#resources>)
-    * [Content](<#content>)
-    * [Media](<#media>)
+    * [Languages](<#languages>)
+    * [Libraries](<#libraries>)
+    * [Code Used](<#code-used>)
 * [**Acknowledgements**](<#acknowledgements>)
 
 
 ## Features
 ### Existing Features
 
-#### Homepage
+#### Login
 
-#### The Rules
+#### Create Account
 
-#### Enter a Username
+##### Generate PIN
 
-#### Choose a Difficlty
+##### Add User to Database
 
-#### Answer the Questions
+#### Check Account Balance
 
-#### High Scores
+#### Deposit Funds
 
-#### Sound
+#### Withdraw Funds
 
-#### Close the Game
+#### View PIN
+
+#### Logout
 
 [Back to top](<#contents>)
 ### Future Features
@@ -187,18 +159,27 @@ The folloiwng tests were carried out.
 [Back to top](<#contents>)
 
 ## Deployment
-Git and GitHUb were used for version control. As Python is a backend language and can't be displayed with GitHub I used Heroku for the live preview.
+Git and GitHub were used for version control. As Python is a backend language and can't be displayed with GitHub I used Heroku for the live preview.
 
-### To Deploy the project on Heroku
+### Heroku Deployment
 1. Login to Heroku
 
-### To Fork the project
+When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+
+1. `heroku/python`
+2. `heroku/nodejs`
+
+You must then create a _Config Var_ called `PORT`. Set this to `8000`
+
+If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+
+### To Fork the Project
 To make a copy of the GitHub Repository you can fork a copy to edit it without changing the root file. This can then be used to update the original repository. To fork take the following steps:
 1. Login to GitHub
 2. Go to the repository [DanMorriss/jazz-platform](https://github.com/DanMorriss/lumos-online-banking)
 3. On the top right-hand side of the page click the `fork` button and save a copy of the original repository to your GitHub account.
 
-### To Clone the project
+### To Clone the Project
 To clone the project on GitHub:
 1. Click the `code` button  
 2. Click the `local` tab
@@ -237,6 +218,7 @@ To clone the project on GitHub:
 - [time](https://www.programiz.com/python-programming/time/sleep) for the sleep fuction.
 - [colorama](https://pypi.org/project/colorama/) to color the text in the terminal.
 - [os](https://www.geeksforgeeks.org/clear-screen-python/) to clear the terminal.
+- [random](https://docs.python.org/3/library/random.html) to generate a 4 digit random PIN.
 - [Tabulate](https://pypi.org/project/tabulate/) to put data in a table.
 
 ### Code Used
@@ -247,5 +229,7 @@ To clone the project on GitHub:
 
 - [Precious Ijege](<https://github.com/precious-ijege>), my Code Institute Mentor.
 - [Kent Yates](<https://github.com/Jelly-man>).
+- Luke Newman for testing my programme in the most creative ways.
+- Selina Sheerin for moral support and userbility testing.
 
 [Back to top](<#contents>)
