@@ -293,7 +293,7 @@ def deposit_funds(username, pin):
                 print(Fore.RED + 'Withdraw ammount cannot be negative')
                 print(Fore.GREEN + 'Please select another ammount')
             else:
-                
+
                 type(Fore.GREEN + f'Depositing £{currency}')
                 deposit = [currency, 0, last_balance + currency]
                 user_sheet.append_row(deposit)
