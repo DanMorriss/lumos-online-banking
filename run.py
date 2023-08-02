@@ -68,6 +68,7 @@ def exit():
     print('[Enter 0 to Exit]')
     print('')
 
+
 def welcome():
     """
     The welcome sequence asking if you would like to login or create an account
@@ -91,7 +92,7 @@ def welcome():
             create_account()
             break
         else:
-            print(Fore.RED + 'Please enter 1 to Login or 2 to create an account')
+            print(Fore.RED + 'Please enter 1 [Login] or 2 [Create an account]')
 
 
 class User:
@@ -175,13 +176,13 @@ def create_account():
             print(f'Your PIN is: {created_user.pin}')
             # Run login function
             account_loop = False
-            
+
             print('Press enter to go to account home')
             input(Fore.WHITE + '>')
             account_home(created_user.username, created_user.pin)
         else:
             print(Fore.RED + f'{username} is not valid.')
-            print(Fore.GREEN + 'Select a username between 5 and 10 characters long.')
+            print(Fore.GREEN + 'Select a username between 5 & 10 characters.')
 
 
 def generate_pin():
@@ -220,7 +221,6 @@ def account_home(username, pin):
     print('4: View PIN')
     print('')
 
-
     selection_loop = True
     while selection_loop:
         user_selection = input(Fore.WHITE + '>')
@@ -254,7 +254,7 @@ def check_account_balance(username, pin):
     user_data = user_sheet.get_all_values()
     last_balance_info = user_data[-1]
     last_balance = turn_to_currency(last_balance_info[-1])
-    
+
     print(tabulate(user_data, headers='firstrow', tablefmt='github'))
     print('')
     type(Fore.BLUE + f'Current balance: £{last_balance}')
@@ -281,7 +281,7 @@ def deposit_funds(username, pin):
 
     while True:
         deposit_ammount = input(Fore.WHITE + '£')
-        
+
         # Give the option to exit
         if deposit_ammount == '0':
             break
@@ -298,7 +298,7 @@ def deposit_funds(username, pin):
 
         # Tell user to enetr a valid number.
         except ValueError:
-            print(Fore.RED + f'{deposit_ammount} is not a valid ammount, please try again.')
+            print(Fore.RED + f'{deposit_ammount} is not a valid ammount.')
 
     account_home(username, pin)
 
@@ -331,7 +331,7 @@ def withdraw_funds(username, pin):
 
     while True:
         withdraw_ammount = input(Fore.WHITE + '£')
-        
+
         # Give the option to exit
         if withdraw_ammount == '0':
             # account_home(username, pin)
@@ -349,13 +349,13 @@ def withdraw_funds(username, pin):
                 deposit = [0, currency, last_balance - currency]
                 type(Fore.GREEN + f'Withdrawing £{currency}')
                 user_sheet.append_row(deposit)
-                type('Success, returning to home')
+                type('Success, returning to home...')
                 sleep(1)
                 break
 
         # Tell user to enetr a valid number.
         except ValueError:
-            print(Fore.RED + f'{withdraw_ammount} is not a valid ammount, please try again.')
+            print(Fore.RED + f'{withdraw_ammount} is not a valid ammount.')
 
     account_home(username, pin)
 
@@ -372,7 +372,7 @@ def view_pin(username, pin):
     print('')
     input(Fore.WHITE + '>')
     sleep(1)
-    account_home(username, pin)    
+    account_home(username, pin)
 
 
 def main():
