@@ -286,12 +286,17 @@ def deposit_funds(username, pin):
         # Deposit into account
         try:
             currency = turn_to_currency(deposit_ammount)
-            type(Fore.GREEN + f'Depositing £{currency}')
-            deposit = [currency, 0, last_balance + currency]
-            user_sheet.append_row(deposit)
-            type('Success, returning to home...')
-            sleep(1)
-            break
+            if currency < 0:
+                print(Fore.RED + 'Withdraw ammount cannot be negative')
+                print(Fore.GREEN + 'Please select another ammount')
+            else:
+                
+                type(Fore.GREEN + f'Depositing £{currency}')
+                deposit = [currency, 0, last_balance + currency]
+                user_sheet.append_row(deposit)
+                type('Success, returning to home...')
+                sleep(1)
+                break
 
         # Tell user to enetr a valid number.
         except ValueError:

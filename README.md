@@ -119,6 +119,7 @@ If you have credentials, such as in the Love Sandwiches project, you must create
 - After creating an account and loggin in, the user has to press any selection twice. To fix this I ran the account_home function instead of the login function.
 - Deposit function won’t exit on 0, ‘currency’ was referenced before being defined. The type function containing the currency variable was moved into the try statement.
 - Deposit not working currency referenced before assignment. Moved the turn_to_currrency function before the type statement.
+- Could eneter a negative ammount to deposit. Added in an if statement disallowing it.
 
 
 #### Unsolved Bugs
