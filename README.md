@@ -150,32 +150,39 @@ The folloiwng tests were carried out.
 
 | Function              | Test                                           | Result |
 |-----------------------|------------------------------------------------|--------|
-| Welcome               | Enter incorrent value                          |  |
-|                       | Enter '1'                                      |  |
-|                       | Enter '2'                                      |  |
-| Login                 | Enter username below 5 chracters               |  |
-|                       | Enter password over 15 characters              |  |
-|                       | Enter username containing whitespace           |  |
-|                       | Enter unknown username                         |  |
-|                       | Enter incorrect PIN                            |  |
-|                       | Enter corect PIN                               |  |
-| Account Home          | Enter an invalid selection                     |  |
-|                       | Enter '1'                                      |  |
-|                       | Enter '2'                                      |  |
-|                       | Enter '3'                                      |  |
-|                       | Enter '4'                                      |  |
+| Welcome               | Enter incorrent value                          | Given error message and chance to try again. |
+|                       | Enter '1'                                      | User is prompted to enter their username |
+|                       | Enter '2'                                      | The user is asked to select a username |
+| Login: enter username | Enter username below 5 chracters               | 'User not found, please try again' printed to the termianl and the option to try again. |
+|                       | Enter password over 15 characters              | 'User not found, please try again' printed to the termianl and the option to try again. |
+|                       | Enter username containing whitespace           | 'User not found, please try again' printed to the termianl and the option to try again. |
+|                       | Enter unknown username                         | 'User not found, please try again' printed to the termianl and the option to try again. |
+|                       | Enter empty field                              | 'User not found, please try again' printed to the termianl and the option to try again. |
 |                       | Enter '0'                                      |  |
-| Create Account        | Enter username below 5 chracters               |  |
-|                       | Enter password over 15 characters              |  |
-|                       | Enter username containing whitespace           |  |
-| Check Account Balance | Type character                                 | Takes you to Account Home|
-| Deposit Funds         | Enter a non number                             |  |
-|                       | Enter a negative number                        |  |
-|                       | Enter a number with more than 2 decimal places |  |
-| Withdraw Funds        | Enter a non number                             |  |
-|                       | Enter a negative number                        |  |
-|                       | Enter a number with more than 2 decimal places |  |
-| View PIN              | Type anything                                  | Takes you to Account Home |
+| Login: enter PIN      | Enter incorrect PIN                            | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
+|                       | Enter empty field                              | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
+|                       | Enter not a number                             | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
+|                       | Enter corect PIN                               | Takes you to Account Home |
+|                       | Enter '0'                                      |  |
+| Account Home          | Enter an invalid selection                     | 'Not a valid selection" printed to the terminal and the option to try again. |
+|                       | Enter '1'                                      | The user is taken to account balance screen. |
+|                       | Enter '2'                                      | The user is take  to the Deposit Funds screen. |
+|                       | Enter '3'                                      | The user is taken to the Withdraw Funds screen |
+|                       | Enter '4'                                      | The user is shown their username and PIN |
+|                       | Enter '0'                                      | The user is 'logged out' and the terminal window is cleared. |
+| Create Account        | Enter a username below 5 chracters             | 'x is not valid. Select a username between 5 & 15 characters." is displayed to the terminal and the user can try again. |
+|                       | Enter a username over 15 characters            | 'x is not valid. Select a username between 5 & 15 characters." is displayed to the terminal and the user can try again. |
+|                       | Enter username containing whitespace           | 'x is not valid, containes whitespace." is displayed to the terminal and the user can try again. |
+| Check Account Balance | Type any character followed by return          | Takes you to Account Home|
+| Deposit Funds         | Enter a non number                             | 'x is not a valid ammount' is printed to the terminal and the option to try again. |
+|                       | Enter a negative number                        | 'Withdraw ammount cannot be negative' is printed to the terminal and the option to try again. |
+|                       | Enter a number with more than 2 decimal places | The ammount is rounded to 2 decial places, added to the database and the user is taken back to Account Home. |
+| Withdraw Funds        | Enter a non number                             | 'x is not a valid ammount' is printed to the terminal and the option to try again. |
+|                       | Enter a negative number                        | 'Withdraw ammount cannot be negative' is printed to the terminal and the option to try again. |
+|                       | Enter a number higher than the account balance | 'Insufficent funds' is printed to the terminal and the user is given the option to enter a new ammount. |
+|                       | Enter the same ammount as the balance          | The full ammount is withdrawn and the user is taken back to the Account Home screen. |
+|                       | Enter a number with more than 2 decimal places | The ammount is rounded to 2 decimal places, withdrawn from the databse and the user is taken back to the Account Home screen. |
+| View PIN              | Type anything followed by return               | The user is taken to Account Home |
 
 [Back to top](<#contents>)
 
