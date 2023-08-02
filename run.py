@@ -79,8 +79,9 @@ def welcome():
     print('')
     print('1: Login')
     print('2: Create an account')
+    print('')
     while True:
-        existing_account = input(Fore.WHITE + '')
+        existing_account = input(Fore.WHITE + '>')
         if (existing_account == "1"):
             sleep(0.2)
             login()
@@ -111,7 +112,7 @@ def login():
     login_loop = True
     while login_loop:
         print(Fore.GREEN + 'Please enter your username to login')
-        submitted_username = input(Fore.WHITE + '')
+        submitted_username = input(Fore.WHITE + '>')
         # Check if username is in database
         stored_un = cust_ws.find(submitted_username, in_column=1)
 
@@ -126,7 +127,7 @@ def login():
             pin_matched = False
             while not pin_matched:
                 print(Fore.GREEN + 'Please enter your PIN: ')
-                submitted_pin = input(Fore.WHITE + '')
+                submitted_pin = input(Fore.WHITE + '>')
                 if (submitted_pin == user.pin):
                     pin_matched = True
                     print(Fore.GREEN + 'PIN correct')
@@ -150,7 +151,7 @@ def create_account():
     customer_database = SHEET.worksheet('customers')
     account_loop = True
     while account_loop:
-        username = input(Fore.WHITE + '')
+        username = input(Fore.WHITE + '>')
         # Don't allow repeat usernames
         if customer_database.find(username, in_column=1) is not None:
             print(Fore.RED + 'Username unavalible, try again.')
@@ -176,7 +177,7 @@ def create_account():
             account_loop = False
             
             print('Press enter to go to account home')
-            input('')
+            input(Fore.WHITE + '>')
             account_home(created_user.username, created_user.pin)
         else:
             print(Fore.RED + f'{username} is not valid.')
@@ -222,7 +223,7 @@ def account_home(username, pin):
 
     selection_loop = True
     while selection_loop:
-        user_selection = input(Fore.WHITE + '')
+        user_selection = input(Fore.WHITE + '>')
         if (user_selection == '1'):
             check_account_balance(username, pin)
             break
@@ -258,7 +259,7 @@ def check_account_balance(username, pin):
     print('')
     type(Fore.BLUE + f'Current balance: £{last_balance}')
     print('')
-    user_home = input(Fore.WHITE + '')
+    user_home = input(Fore.WHITE + '>')
     if (user_home == '0'):
         account_home(username, pin)
 
@@ -370,12 +371,12 @@ def view_pin(username, pin):
     Showes the user their PIN
     """
     print_logo()
-    print('Enter 0: Exit')
+    exit()
     print(Fore.BLUE + '')
     data = [['Username', 'PIN'], [username, pin]]
     print(tabulate(data, headers='firstrow', tablefmt='github'))
     print('')
-    input(Fore.WHITE + '')
+    input(Fore.WHITE + '>')
     sleep(1)
     account_home(username, pin)    
 
