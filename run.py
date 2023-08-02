@@ -284,7 +284,6 @@ def deposit_funds(username, pin):
         
         # Give the option to exit
         if deposit_ammount == '0':
-            # account_home(username, pin)
             break
 
         # Deposit into account
@@ -293,17 +292,14 @@ def deposit_funds(username, pin):
             type(Fore.GREEN + f'Depositing £{currency}')
             deposit = [currency, 0, last_balance + currency]
             user_sheet.append_row(deposit)
-            print('Success.')
-            print('Press enter to exit')
-            input('')
+            type('Success, returning to home...')
+            sleep(1)
             break
 
         # Tell user to enetr a valid number.
         except ValueError:
             print(Fore.RED + f'{deposit_ammount} is not a valid ammount, please try again.')
-            print('0: Exit')
 
-    sleep(1)
     account_home(username, pin)
 
 
