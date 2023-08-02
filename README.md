@@ -135,6 +135,8 @@ Happy coding!
 - The loop in account_home as not ending to I added break to end it when user selects 0. I needed to add a break to the loop in account_home as it was still running from the first time so needed to be closed twice.
 - After creating an account and loggin in, the user has to press any selection twice. To fix this I ran the account_home function instead of the login function.
 - Deposit function won’t exit on 0, ‘currency’ was referenced before being defined. The type function containing the currency variable was moved into the try statement.
+- Deposit not working currency referenced before assignment. Moved the turn_to_currrency function before the type statement.
+
 
 #### Unsolved Bugs
 

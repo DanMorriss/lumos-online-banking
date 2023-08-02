@@ -118,7 +118,7 @@ def login():
             # Check PIN
             pin_matched = False
             while not pin_matched:
-                print('Please enter your PIN: ')
+                print(Fore.GREEN + 'Please enter your PIN: ')
                 submitted_pin = input(Fore.WHITE + '')
                 if (submitted_pin == user.pin):
                     pin_matched = True
@@ -281,10 +281,13 @@ def deposit_funds(username, pin):
 
         # Deposit into account
         try:
-            type(Fore.GREEN + f'Depositing £{currency}')
             currency = turn_to_currency(deposit_ammount)
+            type(Fore.GREEN + f'Depositing £{currency}')
             deposit = [currency, 0, last_balance + currency]
             user_sheet.append_row(deposit)
+            print('Success.')
+            print('Press enter to exit')
+            input('')
             break
 
         # Tell user to enetr a valid number.
@@ -292,7 +295,6 @@ def deposit_funds(username, pin):
             print(Fore.RED + f'{deposit_ammount} is not a valid ammount, please try again.')
             print('0: Exit')
 
-    
     sleep(1)
     account_home(username, pin)
 
