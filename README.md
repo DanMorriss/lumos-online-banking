@@ -91,6 +91,7 @@ If you have credentials, such as in the Love Sandwiches project, you must create
 ### Future Features
 
 - Transfer funds to another user.
+- Show only the 10 most recent transactions on account balance.
 
 [Back to top](<#contents>)
 
@@ -143,6 +144,38 @@ As well as testing myself, the application was tested by the following external 
 - Kent Yates
 - Selina Sheerin
 - Luke Newman
+
+All testers passed all tests successfully without any issues or bugs found during testing! 
+The folloiwng tests were carried out.
+
+| Function              | Test                                           | Result |
+|-----------------------|------------------------------------------------|--------|
+| Welcome               | Enter incorrent value                          |  |
+|                       | Enter '1'                                      |  |
+|                       | Enter '2'                                      |  |
+| Login                 | Enter username below 5 chracters               |  |
+|                       | Enter password over 15 characters              |  |
+|                       | Enter username containing whitespace           |  |
+|                       | Enter unknown username                         |  |
+|                       | Enter incorrect PIN                            |  |
+|                       | Enter corect PIN                               |  |
+| Account Home          | Enter an invalid selection                     |  |
+|                       | Enter '1'                                      |  |
+|                       | Enter '2'                                      |  |
+|                       | Enter '3'                                      |  |
+|                       | Enter '4'                                      |  |
+|                       | Enter '0'                                      |  |
+| Create Account        | Enter username below 5 chracters               |  |
+|                       | Enter password over 15 characters              |  |
+|                       | Enter username containing whitespace           |  |
+| Check Account Balance | Type character                                 | Takes you to Account Home|
+| Deposit Funds         | Enter a non number                             |  |
+|                       | Enter a negative number                        |  |
+|                       | Enter a number with more than 2 decimal places |  |
+| Withdraw Funds        | Enter a non number                             |  |
+|                       | Enter a negative number                        |  |
+|                       | Enter a number with more than 2 decimal places |  |
+| View PIN              | Type anything                                  | Takes you to Account Home |
 
 [Back to top](<#contents>)
 

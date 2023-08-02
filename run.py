@@ -63,7 +63,7 @@ def exit():
     """
     Prints the exit statement at the top of each function page.
     """
-    print('[Enter 0 to Exit]')
+    print('                                                [Enter 0 to Exit]')
     print('')
 
 
