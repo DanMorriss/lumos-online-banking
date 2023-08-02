@@ -236,6 +236,9 @@ def account_home(username, pin):
             break
         elif (user_selection == '0'):
             selection_loop = False
+            type(Fore.GREEN + 'Logging out...')
+            sleep(1)
+            clear()
             break
         else:
             print(Fore.RED + 'Not a valid selection')
