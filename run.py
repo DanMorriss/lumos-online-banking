@@ -10,11 +10,9 @@ import sys
 # Colorama to change the text color
 from colorama import Fore
 # To clear the termianal
-from os import system
+import os
 # Random number
 import random
-# To test if something is a number
-from math import isnan
 # To create tables
 from tabulate import tabulate
 
