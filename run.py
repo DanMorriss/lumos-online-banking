@@ -8,9 +8,9 @@ import pyfiglet
 from time import sleep
 import sys
 # Colorama to change the text color
-from colorama import Fore, Back
+from colorama import Fore
 # To clear the termianal
-import os
+from os import system
 # Random number
 import random
 # To test if something is a number
