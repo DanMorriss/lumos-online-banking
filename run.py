@@ -72,6 +72,7 @@ def welcome():
     The welcome sequence asking if you would like to login or create an account
     """
     print_logo()
+    exit()
     type('Welcome to Lumos Online Banking')
     print('')
     print('Would you like to login or create an account?')
@@ -88,6 +89,11 @@ def welcome():
         elif (existing_account == "2"):
             sleep(0.2)
             create_account()
+            break
+        elif (existing_account == "0"):
+            type(Fore.GREEN + 'Closing application...')
+            sleep(1)
+            clear()
             break
         else:
             print(Fore.RED + 'Please enter 1 [Login] or 2 [Create an account]')
@@ -112,6 +118,13 @@ def login():
     while login_loop:
         print(Fore.GREEN + 'Please enter your username to login')
         submitted_username = input(Fore.WHITE + '>')
+        
+                # Allow logout if user enters 0
+        if submitted_username == '0':
+            type(Fore.GREEN + 'Closing application...')
+            sleep(1)
+            clear()
+            break
         # Check if username is in database
         stored_un = cust_ws.find(submitted_username, in_column=1)
 
@@ -146,11 +159,20 @@ def create_account():
     characters long with no white space and
     A randomly generated 4 digit PIN and adds the information to the database.
     """
-    print(Fore.GREEN + 'Select a username between 5 and 15 characters long.')
+    print(Fore.GREEN + 'Create an Account')
+    print('Select a username between 5 and 15 characters long.')
     customer_database = SHEET.worksheet('customers')
     account_loop = True
     while account_loop:
         username = input(Fore.WHITE + '>')
+        
+        # Allow logout if user enters 0
+        if username == '0':
+            type(Fore.GREEN + 'Closing application...')
+            sleep(1)
+            clear()
+            break
+        
         # Don't allow repeat usernames
         if customer_database.find(username, in_column=1) is not None:
             print(Fore.RED + 'Username unavalible, try again.')

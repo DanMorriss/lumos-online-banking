@@ -64,6 +64,9 @@
 
 - Transfer funds to another user.
 - Show only the 10 most recent transactions on account balance.
+- Limit number of PIN attempts.
+- Don't confirm username when logging in to avoid hacking.
+- Allow users to change PIN.
 
 [Back to top](<#contents>)
 
@@ -125,17 +128,18 @@ The folloiwng tests were carried out.
 | Welcome               | Enter incorrent value                          | Given error message and chance to try again. |
 |                       | Enter '1'                                      | User is prompted to enter their username |
 |                       | Enter '2'                                      | The user is asked to select a username |
+|                       | Enter '0'                                      | 'Closing application...' is printed to the terminal then it closes. |
 | Login: enter username | Enter username below 5 chracters               | 'User not found, please try again' printed to the termianl and the option to try again. |
 |                       | Enter password over 15 characters              | 'User not found, please try again' printed to the termianl and the option to try again. |
 |                       | Enter username containing whitespace           | 'User not found, please try again' printed to the termianl and the option to try again. |
 |                       | Enter unknown username                         | 'User not found, please try again' printed to the termianl and the option to try again. |
 |                       | Enter empty field                              | 'User not found, please try again' printed to the termianl and the option to try again. |
-|                       | Enter '0'                                      |  |
+|                       | Enter '0'                                      | 'Closing application...' is printed to the terminal then it closes. |
 | Login: enter PIN      | Enter incorrect PIN                            | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
 |                       | Enter empty field                              | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
 |                       | Enter not a number                             | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
 |                       | Enter corect PIN                               | Takes you to Account Home |
-|                       | Enter '0'                                      |  |
+|                       | Enter '0'                                      | 'Closing application...' is printed to the terminal then it closes. |
 | Account Home          | Enter an invalid selection                     | 'Not a valid selection" printed to the terminal and the option to try again. |
 |                       | Enter '1'                                      | The user is taken to account balance screen. |
 |                       | Enter '2'                                      | The user is take  to the Deposit Funds screen. |
