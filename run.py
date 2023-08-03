@@ -109,54 +109,36 @@ class User:
 
 
 def login():
-    """
-    Checks database for username and validates the users PIN
-    """
+    print_logo()
+    print('')
+    print('Please enter your username to login')
+    submitted_un = input(Fore.WHITE + '>')
+
+    print(Fore.GREEN + 'Please enter your PIN')
+    submitted_pin = input(Fore.WHITE + '>')
+
+    # Get customer details worksheet
     cust_ws = SHEET.worksheet('customers')
+    # Find username (returns None if not in database)
+    stored_un = cust_ws.find(submitted_un, in_column=1)
 
-    login_loop = True
-    while login_loop:
-        print(Fore.GREEN + 'Please enter your username to login')
-        print('                                  [Enter 2 to create an account]')
-        print('')
-        submitted_username = input(Fore.WHITE + '>')
-
-        # Allow logout if user enters 0
-        if submitted_username == '0':
-            type(Fore.GREEN + 'Closing application...')
+    # If username correct
+    if stored_un:
+        # Find PIN in databse
+        stored_pin = cust_ws.cell(stored_un.row, stored_un.col + 1).value
+        if stored_pin == submitted_pin:
+            type(Fore.GREEN + 'Loading account...')
             sleep(1)
-            clear()
-            break
-        elif submitted_username == '2':
-            create_account()
-            return
-        # Check if username is in database
-        stored_un = cust_ws.find(submitted_username, in_column=1)
-
-        # Check PIN if username in database or ask for valid username
-        if stored_un:
-            # Get PIN associated with username
-            stored_pin = cust_ws.cell(stored_un.row, stored_un.col + 1).value
-            # Create user object to store username and pin
-            user = User(submitted_username, stored_pin)
-            # type(Fore.GREEN + f'Welcome {user.username}')
-            # Check PIN
-            pin_matched = False
-            while not pin_matched:
-                print(Fore.GREEN + 'Please enter your PIN: ')
-                submitted_pin = input(Fore.WHITE + '>')
-                if (submitted_pin == user.pin):
-                    pin_matched = True
-                    print(Fore.GREEN + 'PIN correct')
-                    type('Loading account details...')
-                    sleep(1)
-                    login_loop = False
-                    account_home(user.username, user.pin)
-                else:
-                    print(Fore.RED + 'Incorrect PIN, please try again')
+            account_home(submitted_un, submitted_pin)
         else:
-            print(Fore.RED + 'User not found, please try again.')
-
+            type(Fore.RED + 'Username or PIN incorrect')
+            sleep(1)
+            welcome()
+    # If username incorrect
+    else:
+        type(Fore.RED + 'Username or PIN incorrect')
+        sleep(1)
+        welcome()
 
 
 def create_account():
