@@ -179,6 +179,10 @@ def create_account():
         # Check for whitespace
         elif (any(char.isspace() for char in username)):
             print(Fore.RED + f'{username} not valid, containes whitespace.')
+        # Make sure first character is a letter
+        elif username[0].isalpha() == False:
+            print(Fore.RED + f'{username} is not valid.')
+            print(Fore.GREEN + 'First character must be a letter.')
         # Make username between 5 and 15 characters
         elif (len(username) < 16) and (len(username) > 4):
             print(Fore.GREEN + f'{username} is a valid username')

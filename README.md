@@ -93,7 +93,6 @@ To create an account the user is asked for a username. They are shown an apporpi
 - Allow users to change PIN.
 - Add an admin feature to view all customers and corresponding account information, search for a user and delete a users profile.
 - Allow user to delete their account.
-- Don't allow usernames to begin with numbers. Must begin with a letter.
 
 [Back to top](<#contents>)
 
@@ -123,6 +122,7 @@ To create an account the user is asked for a username. They are shown an apporpi
 - Deposit function won’t exit on 0, ‘currency’ was referenced before being defined. The type function containing the currency variable was moved into the try statement.
 - Deposit not working currency referenced before assignment. Moved the turn_to_currrency function before the type statement.
 - Could eneter a negative ammount to deposit. Added in an if statement disallowing it.
+- A user could create an account using numbers so I added an elif statement to check the first letter is not a number.
 
 
 #### Unsolved Bugs
