@@ -74,6 +74,8 @@ def home():
     print('                                   [Enter 0 to go to Account Home]')
     print('')
 
+def invalid_amount():
+    print(Fore.GREEN + 'Please select another amount')
 
 def welcome():
     """
@@ -311,7 +313,7 @@ def deposit_funds(username, pin):
             currency = turn_to_currency(deposit_ammount)
             if currency < 0:
                 print(Fore.RED + 'Withdraw ammount cannot be negative')
-                print(Fore.GREEN + 'Please select another ammount')
+                invalid_amount()
             else:
 
                 type(Fore.GREEN + f'Depositing £{currency}')
@@ -366,10 +368,10 @@ def withdraw_funds(username, pin):
             currency = turn_to_currency(withdraw_ammount)
             if currency > last_balance:
                 print(Fore.RED + 'Insufficent funds')
-                print(Fore.GREEN + 'Please select another ammount')
+                invalid_amount()
             elif currency < 0:
                 print(Fore.RED + 'Withdraw ammount cannot be negative')
-                print(Fore.GREEN + 'Please select another ammount')
+                invalid_amount()
             else:
                 deposit = [0, currency, last_balance - currency]
                 type(Fore.GREEN + f'Withdrawing £{currency}')
