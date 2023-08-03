@@ -282,7 +282,7 @@ def check_account_balance(username, pin):
     type(Fore.BLUE + f'Current balance: £{last_balance}')
     print('')
     print(Fore.GREEN + 'Press enter to go to account home.')
-    user_home = input(Fore.WHITE + '>')
+    input(Fore.WHITE + '>')
     account_home(username, pin)
 
 
