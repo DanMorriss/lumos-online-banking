@@ -63,18 +63,24 @@ def exit():
     """
     Prints the exit statement at the top of each function page.
     """
-    print('                                                [Enter 0 to Exit]')
+    print('                                                [Enter 0 to Logout]')
     print('')
 
+def home():
+    """
+    Prints the account home statement at the top of each function page.
+    """
+    print('                                    [Enter 0 to go to Account Home]')
+    print('')
 
 def welcome():
     """
     The welcome sequence asking if you would like to login or create an account
     """
     print_logo()
-    exit()
     type('Welcome to Lumos Online Banking')
     print('')
+    sleep(0.5)
     print('Would you like to login or create an account?')
     print('')
     print('1: Login')
@@ -90,13 +96,8 @@ def welcome():
             sleep(0.2)
             create_account()
             break
-        elif (existing_account == "0"):
-            type(Fore.GREEN + 'Closing application...')
-            sleep(1)
-            clear()
-            break
         else:
-            print(Fore.RED + 'Please enter 1 [Login] or 2 [Create an account]')
+            print(Fore.RED + 'Please enter 1 to login or 2 to create an account')
 
 
 class User:
@@ -109,6 +110,10 @@ class User:
 
 
 def login():
+    """
+    Validates users username and pin then either loads account home or
+    sends the user back to the welcome page.
+    """
     print_logo()
     print('')
     print('Please enter your username to login')
@@ -147,21 +152,19 @@ def create_account():
     characters long with no white space and
     A randomly generated 4 digit PIN and adds the information to the database.
     """
+    print_logo()
+    print('                                              [Enter 1 to login]')
+    print('')
     print(Fore.GREEN + 'To create an account, please select a username')
     print('between 5 and 15 characters long.')
-    print('                                              [Enter 1 to login]')
+    print('')
     customer_database = SHEET.worksheet('customers')
     account_loop = True
     while account_loop:
         username = input(Fore.WHITE + '>')
 
-        # Allow logout if user enters 0
-        if username == '0':
-            type(Fore.GREEN + 'Closing application...')
-            sleep(1)
-            clear()
-            break
-        elif username == '1':
+        # Allow user to login
+        if username == '1':
             login()
             return
 
@@ -252,7 +255,7 @@ def account_home(username, pin):
             selection_loop = False
             type(Fore.GREEN + 'Logging out...')
             sleep(1)
-            clear()
+            welcome()
             break
         else:
             print(Fore.RED + 'Not a valid selection')
@@ -260,7 +263,6 @@ def account_home(username, pin):
 
 def check_account_balance(username, pin):
     print_logo()
-    exit()
     type('Checking account balance...')
     print('')
     sleep(0.5)
@@ -291,7 +293,7 @@ def deposit_funds(username, pin):
     last_balance_info = user_data[-1]
     last_balance = turn_to_currency(last_balance_info[-1])
 
-    exit()
+    home()
     type('How much would you like to deposit?')
 
     while True:
@@ -336,7 +338,7 @@ def withdraw_funds(username, pin):
     Withdraws money from the users account and calculates the new balance.
     """
     print_logo()
-    exit()
+    home()
 
     # Get the previous balance
     user_sheet = SHEET.worksheet(username)
@@ -385,7 +387,6 @@ def view_pin(username, pin):
     Showes the user their PIN
     """
     print_logo()
-    exit()
     print(Fore.BLUE + '')
     data = [['Username', 'PIN'], [username, pin]]
     print(tabulate(data, headers='firstrow', tablefmt='github'))
