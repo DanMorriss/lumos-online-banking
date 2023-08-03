@@ -135,6 +135,7 @@ The folloiwng tests were carried out.
 |                       | Enter unknown username                         | 'User not found, please try again' printed to the termianl and the option to try again. |
 |                       | Enter empty field                              | 'User not found, please try again' printed to the termianl and the option to try again. |
 |                       | Enter '0'                                      | 'Closing application...' is printed to the terminal then it closes. |
+|                       | Enter '2'                                      | Sends the user to Create Account. |
 | Login: enter PIN      | Enter incorrect PIN                            | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
 |                       | Enter empty field                              | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
 |                       | Enter not a number                             | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
@@ -149,6 +150,8 @@ The folloiwng tests were carried out.
 | Create Account        | Enter a username below 5 chracters             | 'x is not valid. Select a username between 5 & 15 characters." is displayed to the terminal and the user can try again. |
 |                       | Enter a username over 15 characters            | 'x is not valid. Select a username between 5 & 15 characters." is displayed to the terminal and the user can try again. |
 |                       | Enter username containing whitespace           | 'x is not valid, containes whitespace." is displayed to the terminal and the user can try again. |
+|                       | Enter '0'                                      | 'Closing application...' is printed to the terminal, the screen is cleared then the application closes. |
+|                       | Enter '1'                                      | The user is asked for the username to login and the login function is run. |
 | Check Account Balance | Type any character followed by return          | Takes you to Account Home|
 | Deposit Funds         | Enter a non number                             | 'x is not a valid ammount' is printed to the terminal and the option to try again. |
 |                       | Enter a negative number                        | 'Withdraw ammount cannot be negative' is printed to the terminal and the option to try again. |

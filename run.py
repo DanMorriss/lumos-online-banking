@@ -117,10 +117,10 @@ def login():
     login_loop = True
     while login_loop:
         print(Fore.GREEN + 'Please enter your username to login')
-        print('Or 2 to create an account.')
+        print('                              [Enter 2 to create an account]')
         print('')
         submitted_username = input(Fore.WHITE + '>')
-        
+
         # Allow logout if user enters 0
         if submitted_username == '0':
             type(Fore.GREEN + 'Closing application...')
@@ -164,20 +164,24 @@ def create_account():
     characters long with no white space and
     A randomly generated 4 digit PIN and adds the information to the database.
     """
-    print(Fore.GREEN + 'Create an Account')
-    print('Select a username between 5 and 15 characters long.')
+    print(Fore.GREEN + 'To create an account, please select a username')
+    print('between 5 and 15 characters long.')
+    print('                                             [Enter 1 to login]')
     customer_database = SHEET.worksheet('customers')
     account_loop = True
     while account_loop:
         username = input(Fore.WHITE + '>')
-        
+
         # Allow logout if user enters 0
         if username == '0':
             type(Fore.GREEN + 'Closing application...')
             sleep(1)
             clear()
             break
-        
+        elif username == '1':
+            login()
+            return
+
         # Don't allow repeat usernames
         if customer_database.find(username, in_column=1) is not None:
             print(Fore.RED + 'Username unavalible, try again.')
