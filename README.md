@@ -90,9 +90,10 @@ To create an account the user is asked for a username. They are shown an apporpi
 
 - Transfer funds to another user.
 - Show only the 10 most recent transactions on account balance.
-- Limit number of PIN attempts.
-- Don't confirm username when logging in to avoid hacking.
 - Allow users to change PIN.
+- Add an admin feature to view all customers and corresponding account information, search for a user and delete a users profile.
+- Allow user to delete their account.
+- Don't allow usernames to begin with numbers. Must begin with a letter.
 
 [Back to top](<#contents>)
 

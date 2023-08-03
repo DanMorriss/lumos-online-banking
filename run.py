@@ -63,15 +63,17 @@ def exit():
     """
     Prints the exit statement at the top of each function page.
     """
-    print('                                                [Enter 0 to Logout]')
+    print('                                               [Enter 0 to Logout]')
     print('')
+
 
 def home():
     """
     Prints the account home statement at the top of each function page.
     """
-    print('                                    [Enter 0 to go to Account Home]')
+    print('                                   [Enter 0 to go to Account Home]')
     print('')
+
 
 def welcome():
     """
@@ -97,7 +99,8 @@ def welcome():
             create_account()
             break
         else:
-            print(Fore.RED + 'Please enter 1 to login or 2 to create an account')
+            print(Fore.RED + 'Invalid selection')
+            print(Fore.GREEN + 'Enter 1 to login or 2 to create an account')
 
 
 class User:
