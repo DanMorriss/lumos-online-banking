@@ -41,7 +41,23 @@
 ## Features
 ### Existing Features
 
+Upon starting the programme the banks logo is displayed and the user is given the option to:
+1. Login
+2. Create an account
+0. Exit
+
 #### Login
+
+If the user selects 1, they are taken to the login page where they are prompted to enter a username or press 2 to create an account.
+They will be show an appropiate error message if thier entry:
+- contains any whitespace
+- is below 5 characters long
+- is longer than 15 characters
+- not in the database
+
+If their username is in the database they will be prompted to enter their PIN. They will be shown an appropiate error message if thier PIN:
+- not 4 numeric characters 
+If their PIN matches the one associated with their account in the databse they are sent to their account homepage.
 
 #### Create Account
 

@@ -117,7 +117,7 @@ def login():
     login_loop = True
     while login_loop:
         print(Fore.GREEN + 'Please enter your username to login')
-        print('                              [Enter 2 to create an account]')
+        print('                                  [Enter 2 to create an account]')
         print('')
         submitted_username = input(Fore.WHITE + '>')
 
@@ -166,7 +166,7 @@ def create_account():
     """
     print(Fore.GREEN + 'To create an account, please select a username')
     print('between 5 and 15 characters long.')
-    print('                                             [Enter 1 to login]')
+    print('                                              [Enter 1 to login]')
     customer_database = SHEET.worksheet('customers')
     account_loop = True
     while account_loop:
@@ -291,6 +291,7 @@ def check_account_balance(username, pin):
     print('')
     type(Fore.BLUE + f'Current balance: £{last_balance}')
     print('')
+    print(Fore.GREEN + 'Press enter to go to account home.')
     user_home = input(Fore.WHITE + '>')
     account_home(username, pin)
 
@@ -328,7 +329,7 @@ def deposit_funds(username, pin):
                 type(Fore.GREEN + f'Depositing £{currency}')
                 deposit = [currency, 0, last_balance + currency]
                 user_sheet.append_row(deposit)
-                type('Success, returning to home...')
+                type('Success, returning to account home...')
                 sleep(1)
                 break
 
@@ -385,7 +386,7 @@ def withdraw_funds(username, pin):
                 deposit = [0, currency, last_balance - currency]
                 type(Fore.GREEN + f'Withdrawing £{currency}')
                 user_sheet.append_row(deposit)
-                type('Success, returning to home...')
+                type('Success, returning to account home...')
                 sleep(1)
                 break
 
@@ -406,6 +407,7 @@ def view_pin(username, pin):
     data = [['Username', 'PIN'], [username, pin]]
     print(tabulate(data, headers='firstrow', tablefmt='github'))
     print('')
+    print(Fore.GREEN + 'Press enter to go to account home')
     input(Fore.WHITE + '>')
     sleep(1)
     account_home(username, pin)
