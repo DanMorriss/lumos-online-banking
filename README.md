@@ -48,7 +48,7 @@ Upon starting the programme the banks logo is displayed and the user is given th
 
 #### Login
 
-If the user selects 1, they are taken to the login page where they are prompted to enter a username or press 2 to create an account.
+When the user selects 'login' they are asked for their username.
 They will be show an appropiate error message if thier entry:
 - contains any whitespace
 - is below 5 characters long
@@ -59,7 +59,17 @@ If their username is in the database they will be prompted to enter their PIN. T
 - not 4 numeric characters 
 If their PIN matches the one associated with their account in the databse they are sent to their account homepage.
 
+They can exit the programme at any time by entering '0' or create an account by entering '2'.
+
 #### Create Account
+
+To create an account the user is asked for a username. They are shown an apporpiate error message if their username:
+- contains any whitespace
+- is below 5 characters long
+- is longer than 15 characters
+- is already in the database, belonging to another user
+
+
 
 ##### Generate PIN
 

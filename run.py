@@ -158,6 +158,7 @@ def login():
             print(Fore.RED + 'User not found, please try again.')
 
 
+
 def create_account():
     """
     Create an account with a user generated username between 5 and 15
