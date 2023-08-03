@@ -117,14 +117,19 @@ def login():
     login_loop = True
     while login_loop:
         print(Fore.GREEN + 'Please enter your username to login')
+        print('Or 2 to create an account.')
+        print('')
         submitted_username = input(Fore.WHITE + '>')
         
-                # Allow logout if user enters 0
+        # Allow logout if user enters 0
         if submitted_username == '0':
             type(Fore.GREEN + 'Closing application...')
             sleep(1)
             clear()
             break
+        elif submitted_username == '2':
+            create_account()
+            return
         # Check if username is in database
         stored_un = cust_ws.find(submitted_username, in_column=1)
 
