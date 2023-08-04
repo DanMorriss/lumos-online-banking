@@ -26,9 +26,8 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('lumos_online_banking')
-
-customers = SHEET.worksheet('customers')
-data = customers.get_all_values()
+CUSTOMERS = SHEET.worksheet('customers')
+data = CUSTOMERS.get_all_values()
 
 
 def type(text):
@@ -127,15 +126,13 @@ def login():
     print(Fore.GREEN + 'Please enter your PIN')
     submitted_pin = input(Fore.WHITE + '>')
 
-    # Get customer details worksheet
-    cust_ws = SHEET.worksheet('customers')
     # Find username (returns None if not in database)
-    stored_un = cust_ws.find(submitted_un, in_column=1)
+    stored_un = CUSTOMERS.find(submitted_un, in_column=1)
 
     # If username correct
     if stored_un:
         # Find PIN in databse
-        stored_pin = cust_ws.cell(stored_un.row, stored_un.col + 1).value
+        stored_pin = CUSTOMERS.cell(stored_un.row, stored_un.col + 1).value
         if stored_pin == submitted_pin:
             type(Fore.GREEN + 'Loading account...')
             sleep(1)
@@ -404,6 +401,41 @@ def view_pin(username, pin):
     input(Fore.WHITE + '>')
     sleep(1)
     account_home(username, pin)
+
+
+def delete_account(username, pin):
+    """
+    Deletes a user account removing the user information from the database.
+    """
+    print_logo()
+    print('Are you sure you want to delete this account?')
+    print('This cannot be undone.')
+    print('Y/N')
+    
+    delete_loop = True
+    while delete_loop:
+        user_choice = input(Fore.WHITE + '>')
+        if user_choice.lower() == 'n':
+            type(Fore.GREEN + 'Going to accont home...')
+            delete_loop = False
+        elif user_choice.lower() == 'y':
+            type(Fore.RED + 'Deleting account...')
+            delete_loop = False
+            # Delete users sheet from the database.
+            worksheet = SHEET.worksheet(username)
+            SHEET.del_worksheet(worksheet)
+            # Delete the users details from the customers sheet in database
+            list_values = CUSTOMERS.col_values(1)
+            row_number = list_values.index(username) + 1
+            CUSTOMERS.delete_rows(row_number)
+            print(Fore.GREEN + 'Account succesfully deleted')
+            type('Logging out...')
+        else:
+            print(Fore.RED + 'Invalid selection')
+            print(Fore.GREEN + 'Enter Y to delete your account or N to cancel')
+
+    sleep(1)
+    welcome()
 
 
 def main():
