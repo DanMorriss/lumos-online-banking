@@ -92,7 +92,6 @@ To create an account the user is asked for a username. They are shown an apporpi
 - Show only the 10 most recent transactions on account balance.
 - Allow users to change PIN.
 - Add an admin feature to view all customers and corresponding account information, search for a user and delete a users profile.
-- Allow user to delete their account.
 
 [Back to top](<#contents>)
 

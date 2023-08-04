@@ -133,7 +133,11 @@ def login():
     if stored_un:
         # Find PIN in databse
         stored_pin = CUSTOMERS.cell(stored_un.row, stored_un.col + 1).value
-        if stored_pin == submitted_pin:
+        if submitted_un == 'ADMIN' and stored_pin == submitted_pin:
+            type(Fore.GREEN + 'Loading account...')
+            sleep(1)
+            admin_login(submitted_un, submitted_pin)
+        elif stored_pin == submitted_pin:
             type(Fore.GREEN + 'Loading account...')
             sleep(1)
             account_home(submitted_un, submitted_pin)
@@ -457,6 +461,13 @@ def check_pin(pin):
         print(Fore.RED + 'Incorrect PIN')
         sleep(1)
         return False
+
+
+def admin_login(username, pin):
+    print_logo()
+    type('Welcome Admin')
+    print(username)
+    print(pin)
 
 
 def main():
