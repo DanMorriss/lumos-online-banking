@@ -422,24 +422,41 @@ def delete_account(username, pin):
         if user_choice.lower() == 'n':
             type(Fore.GREEN + 'Going to accont home...')
             delete_loop = False
+            account_home(username, pin)
         elif user_choice.lower() == 'y':
-            type(Fore.RED + 'Deleting account...')
-            delete_loop = False
-            # Delete users sheet from the database.
-            worksheet = SHEET.worksheet(username)
-            SHEET.del_worksheet(worksheet)
-            # Delete the users details from the customers sheet in database
-            list_values = CUSTOMERS.col_values(1)
-            row_number = list_values.index(username) + 1
-            CUSTOMERS.delete_rows(row_number)
-            print(Fore.GREEN + 'Account succesfully deleted')
-            type('Logging out...')
+            pin_attempt = check_pin(pin)
+            if pin_attempt:
+                type(Fore.RED + 'Deleting account...')
+                delete_loop = False
+                # Delete users sheet from the database.
+                worksheet = SHEET.worksheet(username)
+                SHEET.del_worksheet(worksheet)
+                # Delete the users details from the customers sheet in database
+                list_values = CUSTOMERS.col_values(1)
+                row_number = list_values.index(username) + 1
+                CUSTOMERS.delete_rows(row_number)
+                print(Fore.GREEN + 'Account succesfully deleted')
+                type('Logging out...')
+            else:
+                account_home(username, pin)
+                break
         else:
             print(Fore.RED + 'Invalid selection')
             print(Fore.GREEN + 'Enter Y to delete your account or N to cancel')
 
     sleep(1)
     welcome()
+
+
+def check_pin(pin):
+    print(Fore.GREEN + 'Please enter you PIN')
+    user_pin = input(Fore.WHITE + '>')
+    if user_pin == pin:
+        return True
+    else:
+        print(Fore.RED + 'Incorrect PIN')
+        sleep(1)
+        return False
 
 
 def main():
