@@ -240,6 +240,7 @@ def account_home(username, pin):
     print('2: Deposit Funds')
     print('3: Withdraw Funds')
     print('4: View PIN')
+    print('5: Delete Account')
     print('')
 
     selection_loop = True
@@ -256,6 +257,9 @@ def account_home(username, pin):
             break
         elif (user_selection == '4'):
             view_pin(username, pin)
+            break
+        elif user_selection == '5':
+            delete_account(username, pin)
             break
         elif (user_selection == '0'):
             selection_loop = False
