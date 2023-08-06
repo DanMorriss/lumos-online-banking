@@ -281,6 +281,7 @@ def check_account_balance(username, pin):
     print('')
     sleep(0.5)
 
+    # get last balance
     user_sheet = SHEET.worksheet(username)
     user_data = user_sheet.get_all_values()
     last_balance_info = user_data[-1]
@@ -288,7 +289,7 @@ def check_account_balance(username, pin):
 
     print(tabulate(user_data, headers='firstrow', tablefmt='github'))
     print('')
-    type(Fore.BLUE + f'Current balance: £{last_balance}')
+    type(Fore.BLUE + f'Current balance: {last_balance}')
     print('')
     print(Fore.GREEN + 'Press enter to go to account home.')
     input(Fore.WHITE + '>')
@@ -453,6 +454,9 @@ def delete_account(username, pin):
 
 
 def check_pin(pin):
+    """
+    Checks whether a given PIN is correct.
+    """
     print(Fore.GREEN + 'Please enter you PIN')
     user_pin = input(Fore.WHITE + '>')
     if user_pin == pin:
@@ -464,14 +468,71 @@ def check_pin(pin):
 
 
 def admin_login(username, pin):
+    """
+    Opens the admin pannel.
+    """
     print_logo()
+    exit()
     type('Welcome Admin')
+    print('')
+    
     print(username)
     print(pin)
+    
+    print('1: View all users')
+    print('2: Delete a user')
+    print('')
+    admin_choice = input(Fore.WHITE + '>')
+    
+    selection_loop = True
+    while selection_loop:
+        if admin_choice == '1':
+            selection_loop = False
+            user_list(username, pin)
+
+def user_list(username, pin):
+    """
+    Give Admin a list of all the users
+    """
+    
+    print(username)
+    print(pin)
+
+    print_logo()
+    exit()
+    
+    # Create list of uses and pins
+    customer_database = SHEET.worksheet('customers')
+    all_user_details = customer_database.get_all_values()
+    username_pin = all_user_details[2:]
+
+    # Get list of usernames
+    username_list = []
+    for user in username_pin:
+        username_list.append(user[0])
+
+    # Create list of full user details
+    complete_user_details = []
+    for user in username_list:
+        # Create a list with the suername in
+        user_and_balance = [user]
+        # Get user balance
+        user_sheet = SHEET.worksheet(user)
+        user_data = user_sheet.get_all_values()
+        last_balance_info = user_data[-1]
+        last_balance = turn_to_currency(last_balance_info[-1])
+        last_balance_display = f'£{last_balance}'
+        # Combine the username and balance
+        user_and_balance.append(last_balance_display)
+        complete_user_details.append(user_and_balance)
+    
+    #Print the result in a table
+    print(tabulate(complete_user_details, headers=['Username', 'Balance'], tablefmt='github'))
 
 
 def main():
     welcome()
 
 
-main()
+#main()
+user_list('ADMIN', 'password')
