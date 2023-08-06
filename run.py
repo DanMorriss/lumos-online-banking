@@ -492,42 +492,40 @@ def admin_login(username, pin):
 
 def user_list(username, pin):
     """
-    Give Admin a list of all the users
+    Give Admin a list of all the users, their PIN and balance.
     """
     
     print(username)
     print(pin)
 
     print_logo()
-    exit()
+    type('Fetching user data...')
+    print(Fore.BLUE + '')
     
     # Create list of uses and pins
     customer_database = SHEET.worksheet('customers')
-    all_user_details = customer_database.get_all_values()
-    username_pin = all_user_details[2:]
-
-    # Get list of usernames
-    username_list = []
+    user_and_pin = customer_database.get_all_values()
+    username_pin = user_and_pin[2:]
+    # Create list for all details to go into
+    all_users_details = []
+    # Loop through list to get balance and add it to full_user_details
     for user in username_pin:
-        username_list.append(user[0])
-
-    # Create list of full user details
-    complete_user_details = []
-    for user in username_list:
-        # Create a list with the suername in
-        user_and_balance = [user]
-        # Get user balance
-        user_sheet = SHEET.worksheet(user)
+        user_pin_balance = user
+        # Get the balance for the user
+        user_sheet = SHEET.worksheet(user_pin_balance[0])
         user_data = user_sheet.get_all_values()
         last_balance_info = user_data[-1]
         last_balance = turn_to_currency(last_balance_info[-1])
         last_balance_display = f'£{last_balance}'
-        # Combine the username and balance
-        user_and_balance.append(last_balance_display)
-        complete_user_details.append(user_and_balance)
+        user_pin_balance.append(last_balance_display)
+        all_users_details.append(user_pin_balance)
     
     #Print the result in a table
-    print(tabulate(complete_user_details, headers=['Username', 'Balance'], tablefmt='github'))
+    print(tabulate(all_users_details, headers=['Username', 'PIN', 'Balance'], tablefmt='github'))
+    print(Fore.GREEN + '')
+    print('Press enter to return to main menu')
+    input(Fore.WHITE + '>')
+    admin_login(username, pin)
 
 
 def main():
