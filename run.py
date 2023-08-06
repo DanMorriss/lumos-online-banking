@@ -91,11 +91,11 @@ def welcome():
     print('')
     while True:
         existing_account = input(Fore.WHITE + '>')
-        if (existing_account == "1"):
+        if existing_account == "1":
             sleep(0.2)
             login()
             break
-        elif (existing_account == "2"):
+        elif existing_account == "2":
             sleep(0.2)
             create_account()
             break
@@ -178,14 +178,14 @@ def create_account():
         if customer_database.find(username, in_column=1) is not None:
             print(Fore.RED + 'Username unavalible, try again.')
         # Check for whitespace
-        elif (any(char.isspace() for char in username)):
+        elif any(char.isspace() for char in username):
             print(Fore.RED + f'{username} not valid, containes whitespace.')
         # Make sure first character is a letter
         elif username[0].isalpha() == False:
             print(Fore.RED + f'{username} is not valid.')
             print(Fore.GREEN + 'First character must be a letter.')
         # Make username between 5 and 15 characters
-        elif (len(username) < 16) and (len(username) > 4):
+        elif len(username) < 16 and len(username) > 4:
             print(Fore.GREEN + f'{username} is a valid username')
             type('Creating account...')
             # Create a PIN
@@ -250,22 +250,22 @@ def account_home(username, pin):
     selection_loop = True
     while selection_loop:
         user_selection = input(Fore.WHITE + '>')
-        if (user_selection == '1'):
+        if user_selection == '1':
             check_account_balance(username, pin)
             break
-        elif (user_selection == '2'):
+        elif user_selection == '2':
             deposit_funds(username, pin)
             break
-        elif (user_selection == '3'):
+        elif user_selection == '3':
             withdraw_funds(username, pin)
             break
-        elif (user_selection == '4'):
+        elif user_selection == '4':
             view_pin(username, pin)
             break
         elif user_selection == '5':
             delete_account(username, pin)
             break
-        elif (user_selection == '0'):
+        elif user_selection == '0':
             selection_loop = False
             type(Fore.GREEN + 'Logging out...')
             sleep(1)
@@ -325,7 +325,6 @@ def deposit_funds(username, pin):
                 print(Fore.RED + 'Withdraw ammount cannot be negative')
                 invalid_amount()
             else:
-
                 type(Fore.GREEN + f'Depositing £{currency}')
                 deposit = [currency, 0, last_balance + currency]
                 user_sheet.append_row(deposit)
