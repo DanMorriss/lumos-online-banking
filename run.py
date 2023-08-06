@@ -420,12 +420,12 @@ def delete_account(username, pin):
     print('Are you sure you want to delete this account?')
     print('This cannot be undone.')
     print('Y/N')
-    
+
     delete_loop = True
     while delete_loop:
         user_choice = input(Fore.WHITE + '>')
         if user_choice.lower() == 'n':
-            type(Fore.GREEN + 'Going to accont home...')
+            type(Fore.GREEN + 'Going to account home...')
             delete_loop = False
             account_home(username, pin)
         elif user_choice.lower() == 'y':
@@ -453,6 +453,44 @@ def delete_account(username, pin):
     welcome()
 
 
+def admin_delete_account(username):
+    """
+    Deletes a user account removing the user information from the database.
+    """
+    print(Fore.GREEN + 'Are you sure you want to delete this account?')
+    print('This cannot be undone.')
+    print('Y/N')
+
+    delete_loop = True
+    while delete_loop:
+        user_choice = input(Fore.WHITE + '>')
+        if user_choice.lower() == 'n':
+            type(Fore.GREEN + 'Canelling...')
+            sleep(1)
+            delete_loop = False
+            admin_login('ADMIN', 'password')
+            return
+        elif user_choice.lower() == 'y':
+            type(Fore.RED + 'Deleting account...')
+            delete_loop = False
+            # Delete users sheet from the database.
+            worksheet = SHEET.worksheet(username)
+            SHEET.del_worksheet(worksheet)
+            # Delete the users details from the customers sheet in database
+            list_values = CUSTOMERS.col_values(1)
+            row_number = list_values.index(username) + 1
+            CUSTOMERS.delete_rows(row_number)
+            print(Fore.GREEN + 'Account succesfully deleted')
+            sleep(1)
+            admin_login('ADMIN', 'password')
+            return
+        else:
+            print(Fore.RED + 'Invalid selection')
+            print(Fore.GREEN + 'Enter Y to delete your account or N to cancel')
+
+    admin_login('ADMIN', 'password')
+
+
 def check_pin(pin):
     """
     Checks whether a given PIN is correct.
@@ -469,39 +507,57 @@ def check_pin(pin):
 
 def admin_login(username, pin):
     """
-    Opens the admin pannel.
+    Opens the admin pannel and gives choices to logout, view all users and
+    delete a user.
     """
     print_logo()
     exit()
     type('Welcome Admin')
     print('')
-    
-    print(username)
-    print(pin)
-    
+
     print('1: View all users')
     print('2: Delete a user')
     print('')
-    admin_choice = input(Fore.WHITE + '>')
-    
+
     selection_loop = True
     while selection_loop:
+        admin_choice = input(Fore.WHITE + '>')
         if admin_choice == '1':
             selection_loop = False
             user_list(username, pin)
+        elif admin_choice == '2':
+            print(Fore.GREEN + 'To delete a user, enter the username')
+            print('')
+            username_input = input(Fore.WHITE + '>')
+            stored_username = CUSTOMERS.find(username_input, in_column=1)
+            if stored_username:
+                admin_delete_account(username_input)
+                selection_loop = False
+            elif username_input == '0':
+                type(Fore.GREEN + 'Logging out...')
+                sleep(1)
+                welcome()
+                break
+            else:
+                print(Fore.RED + 'User not found')
+        elif admin_choice == '0':
+            type(Fore.GREEN + 'Logging out...')
+            sleep(1)
+            welcome()
+            break
+        else:
+            print(Fore.RED + 'Invalid selection.')
+            print(Fore.GREEN + 'Please try again')
+
 
 def user_list(username, pin):
     """
     Give Admin a list of all the users, their PIN and balance.
     """
-    
-    print(username)
-    print(pin)
-
     print_logo()
     type('Fetching user data...')
     print(Fore.BLUE + '')
-    
+
     # Create list of uses and pins
     customer_database = SHEET.worksheet('customers')
     user_and_pin = customer_database.get_all_values()
@@ -519,7 +575,7 @@ def user_list(username, pin):
         last_balance_display = f'£{last_balance}'
         user_pin_balance.append(last_balance_display)
         all_users_details.append(user_pin_balance)
-    
+
     #Print the result in a table
     print(tabulate(all_users_details, headers=['Username', 'PIN', 'Balance'], tablefmt='github'))
     print(Fore.GREEN + '')
@@ -532,5 +588,4 @@ def main():
     welcome()
 
 
-#main()
-user_list('ADMIN', 'password')
+main()
