@@ -386,7 +386,7 @@ Git and GitHub were used for version control. As Python is a backend language an
 ### To Fork the Project
 To make a copy of the GitHub Repository you can fork a copy to edit it without changing the root file. This can then be used to update the original repository. To fork take the following steps:
 1. Login to GitHub
-2. Go to the repository [DanMorriss/jazz-platform](https://github.com/DanMorriss/lumos-online-banking)
+2. Go to the repository [DanMorriss/lumos-online-banking](https://github.com/DanMorriss/lumos-online-banking)
 3. On the top right-hand side of the page click the `fork` button and save a copy of the original repository to your GitHub account.
 
 ### To Clone the Project
