@@ -131,6 +131,8 @@ Within the confines of the terminal a few modifications have been made to improv
 
 The banks logo is displayed at the top of each page. The pyfiglet library was used for this.
 
+![Logo](assets/lumos-logo.png)
+
 #### Color Scheme
 
 The colorama library was used to change the text color in the terminal.
@@ -139,6 +141,8 @@ The following colors were used to help the users understand the data and site st
 - Red: Error messages
 - White: User input
 - Blue: Account information
+
+![colors](assets/lumos-colors.png)
 
 #### Tables
 
@@ -195,7 +199,7 @@ If their username is valid:
     - Withdraw
     - Balance
 
-[Create account](assets/lumos-create-account.png)
+![Create account](assets/lumos-create-account.png)
 
 #### Account Home
 
