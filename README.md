@@ -1,8 +1,10 @@
-[Live Site](https://lumos-online-banking-698c21a030ae.herokuapp.com/)
-
 # Lumos Online Banking
 
-![Responsive mockup]()
+Lumos Online Banking is a Python based banking app where users can create an account, login, depost & withdraw funds and delete their account. Admins have access to view all the users on the platform and delete their accounts. The programme uses an external database to store all the user information.
+
+[Live Site](https://lumos-online-banking-698c21a030ae.herokuapp.com/)
+
+![Responsive mockup](/assets/responsive_mockup.png)
 
 ## Contents
 
@@ -10,13 +12,15 @@
     * [Existing Features](<#existing-features>)
         * [Login](<#login>)
         * [Create Account](<#create-account>)
-            * [Generate PIN](<#generate-pin>)
-            * [Add User to Database](<#add-user-to-database>)
         * [Check Account Balance](<#Check-Account-Balance>)
         * [Deposit Funds](<#Deposit-Funds>)
         * [Withdraw Funds](<#Withdraw-Funds>)
         * [View PIN](<#View-PIN>)
         * [Logout](<#Logout>)
+        * [Delete Account](<#delete-account>)
+        * [Admin Panel](<#admin-panel>)
+        * [Admin: View all users](<#admin-view-all-users>)
+        * [Admin: Delete a User](<#admin-delete-a-user>)
     * [Future Features](<#future-features>)
 * [**Data Model**](<#data-model>)
 * [**Flowchart**](<#flowchart>)
@@ -34,9 +38,7 @@
     * [Resources](<#resources>)
     * [Languages](<#languages>)
     * [Libraries](<#libraries>)
-    * [Code Used](<#code-used>)
 * [**Acknowledgements**](<#acknowledgements>)
-
 
 ## Features
 ### Existing Features
@@ -68,22 +70,61 @@ To create an account the user is asked for a username. They are shown an apporpi
 - is below 5 characters long
 - is longer than 15 characters
 - is already in the database, belonging to another user
-
-
-
-##### Generate PIN
-
-##### Add User to Database
+If their username is valid: 
+- a 4 digit random PIN is generated and displayed to the user
+- thier username and PIN is added to the customers sheet in the database
+- a worksheet titled with their username ia created and populater with 3 collums:
+    - Deposit
+    - Withdraw
+    - Balance
 
 #### Check Account Balance
 
+A user can check their account balance and will be shown a table containing all past transactions. Then below the table a final account balance is disaplayed.
+
 #### Deposit Funds
+
+A user can choose to deposit funds into their acccount. They will be prompted for the ammount and that will be added to the database. The user is then shown a confirmation message and sent back to the account home.
+The user input is validated and an apporpiate error message will be shown if:
+- The amount entered is not numeric
+- The amount entered is a negative number
+
 
 #### Withdraw Funds
 
+The user can withdraw funds from their account. They are shown their current balnace and then asked how much they would like to withdraw. The user input is validated and an appropiate message is displayed if:
+- The amount entered is not numeric
+- The amount entered is a negative number
+- The amount entered exceeds the current balance of that customer's account
+
 #### View PIN
 
+As the user needs their PIN to login and delete thier account and they may not have noted it down upon creating their account, they can view it from the account home.
+
 #### Logout
+
+To keep the users account safe, they can logout which will clear the terminal and send them back to the login page.
+
+#### Delete Account
+
+A user can delete their account, but as this cannot be undone they need to confirm be clicking 'y' and entering their PIN. Once they have done both those things, all the user information is deleted from the database.
+
+#### Admin Pannel
+
+There is an admin account that can view all the current users and delete user accounts. This is accesable from the login page by entering 'ADMIN' as the username and 'password' as the PIN. From the admin pannel there are two options other than logout. View all users and delete a user.
+
+##### Admin: View all users
+
+The admin has the option to view all the users in the database. The data is disapyed in a table with:
+
+- Username
+- PIN
+- Balance
+
+##### Admin: Delete a user
+
+To delete a the admin is asked for the username of the user they wish to delete then aksed to conform they want to delete the account.
+If that is confiremd all the user information is removed from the database.
 
 [Back to top](<#contents>)
 ### Future Features
@@ -253,8 +294,6 @@ To clone the project on GitHub:
 - [os](https://www.geeksforgeeks.org/clear-screen-python/) to clear the terminal.
 - [random](https://docs.python.org/3/library/random.html) to generate a 4 digit random PIN.
 - [Tabulate](https://pypi.org/project/tabulate/) to put data in a table.
-
-### Code Used
 
 [Back to top](<#contents>)
 
