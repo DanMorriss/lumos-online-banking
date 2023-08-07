@@ -73,8 +73,10 @@ def home():
     print('                                   [Enter 0 to go to Account Home]')
     print('')
 
+
 def invalid_amount():
     print(Fore.GREEN + 'Please select another amount')
+
 
 def welcome():
     """
@@ -181,7 +183,7 @@ def create_account():
         elif any(char.isspace() for char in username):
             print(Fore.RED + f'{username} not valid, containes whitespace.')
         # Make sure first character is a letter
-        elif username[0].isalpha() == False:
+        elif not username[0].isalpha():
             print(Fore.RED + f'{username} is not valid.')
             print(Fore.GREEN + 'First character must be a letter.')
         # Make username between 5 and 15 characters
@@ -575,7 +577,7 @@ def user_list(username, pin):
         user_pin_balance.append(last_balance_display)
         all_users_details.append(user_pin_balance)
 
-    #Print the result in a table
+    # Print the result in a table
     print(tabulate(all_users_details, headers=['Username', 'PIN', 'Balance'], tablefmt='github'))
     print(Fore.GREEN + '')
     print('Press enter to return to main menu')
