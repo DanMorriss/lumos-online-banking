@@ -360,16 +360,29 @@ Git and GitHub were used for version control. As Python is a backend language an
 
 ### Heroku Deployment
 1. Login to Heroku
+![Login to heroku](assets/heroko-login.png)
+2. Click 'New in the top right and 'Create new app'.
+![Creake new Heroku app](assets/heroku-new-app.png)
+3. Enter a unique application name, select your region and click 'Create app'.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+4. Click the 'settings' tab 
+![Heroku settings tab](assets/heroku-settings.png)
+5. Under 'Config Vars' click 'Reveal Config Vars'
+![Heroku reveal cinfig vars](assets/heroko-reveal-config-vars.png)
+6. Add the JSPN CREDS file
+7. Add PORT 8000
+![Add Heroku cofig vars](assets/heroko-cofig-vars.png)
+8. Add 'heroku/python' and 'heroku/node.js' to the 'Buildpacks'
+![Heroku buildpacks](assets/heroko-buildpacks.png)
+9. Click the 'Deploy' tab.
+![Heroku deploy tab](assets/heroku-deploy.png)
+10. In the 'Deployment method' section select 'GitHub'
+11. Search for the repo name and click 'connect'
+![Herokou deployment method](assets/heroku-deployment-method.png)
+12. Under 'Automatic deploys' click 'Enable Automatic Deploys'
+![Heroku automatic deployment](assets/heroku-automatic-deployment.png)
 
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
+[Back to top](<#contents>)
 ### To Fork the Project
 To make a copy of the GitHub Repository you can fork a copy to edit it without changing the root file. This can then be used to update the original repository. To fork take the following steps:
 1. Login to GitHub
