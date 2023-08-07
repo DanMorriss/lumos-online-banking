@@ -8,6 +8,19 @@ Lumos Online Banking is a Python based banking app where users can create an acc
 
 ## Contents
 
+* [**Project**](#project)
+    * [User Stories](#user-stories)
+        * [First Time Visitor](#first-time-visitor)
+        * [Return Visitor](#return-visitor)
+    * [Site Owner Goals](#site-owner-goals)
+* [**User Experience (UX)**](#user-experience-ux)
+    * [Site Structure](#site-structure)
+    * [Flowchart](#flowchart)
+    * [Data Model](#data-model)
+    * [Design Choices](#design-choices)
+        * [Logo]
+        * [Color Scheme](#color-scheme)
+        * [Tables](#tables)
 * [**Features**](#features)
     * [Existing Features](<#existing-features>)
         * [Login](<#login>)
@@ -39,6 +52,98 @@ Lumos Online Banking is a Python based banking app where users can create an acc
     * [Languages](<#languages>)
     * [Libraries](<#libraries>)
 * [**Acknowledgements**](<#acknowledgements>)
+
+## Project
+
+### User Stories
+
+#### First Time Visitor
+
+A user visiting the site for the first time will want to:
+- create an account
+- view their PIN
+- deposit some funds
+- logout
+
+#### Return Visitor
+
+A returning visitor will want to
+- login to their account
+- view their balance
+- withdraw or deposit funds
+- close their account
+
+### Site Owner Goals
+
+As a site owner you may want to:
+- have access to an admin pannel
+- view all the users and their details in the database
+- delete a user
+
+## User Experience (UX)
+
+### Site Structure
+
+The site starts with a welcome page giving you the option to:
+- Login
+- Create an account
+
+After logging in you are taken to account home where you have the options:
+- Check Account Balance
+- Deposit Funds
+- Withdraw Funds
+- View PIN
+- Delete Account
+- Logout
+
+There is also an admin pannel with the options:
+- View all users
+- Delete a user
+- Logout
+
+### Flowchart
+
+![Flow Chart](/assets/lumos_flowchat.png)
+
+### Data Model
+
+Google sheets was used to store and access user data. 
+There are seperatesheets for:
+- The customer list
+- Each individual users balance
+
+The customer list sheet contains:
+- Username
+- PIN
+
+The balance sheets contain ccollums for:
+- Deposit
+- Withdraw
+- Balance
+
+### Design Choices
+
+Within the confines of the terminal a few modifications have been made to improve the UX.
+
+#### Logo
+
+The banks logo is displayed at the top of each page. The pyfiglet library was used for this.
+
+#### Color Scheme
+
+The colorama library was used to change the text color in the terminal.
+The following colors were used to help the users understand the data and site structure.
+- Green: Main site color
+- Red: Error messages
+- White: User input
+- Blue: Account information
+
+#### Tables
+
+Data is displayed in tables for easier understanding by the user. The following data is displayed in tables:
+- Username & PIN
+- Account Balance
+- All users
 
 ## Features
 ### Existing Features
@@ -135,14 +240,6 @@ If that is confiremd all the user information is removed from the database.
 - Add an admin feature to view all customers and corresponding account information, search for a user and delete a users profile.
 
 [Back to top](<#contents>)
-
-## Data Model
-
-- Google sheets was used to store and access user data.
-
-## Flowchart
-
-![Flow Chart](/assets/lumos_flowchat.png)
 
 ## Testing
 
