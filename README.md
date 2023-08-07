@@ -21,6 +21,7 @@ Lumos Online Banking is a Python based banking app where users can create an acc
         * [Logo]
         * [Color Scheme](#color-scheme)
         * [Tables](#tables)
+        * [Slow Typing](#slow-typing)
 * [**Features**](#features)
     * [Existing Features](<#existing-features>)
         * [Login](<#login>)
@@ -140,10 +141,17 @@ The following colors were used to help the users understand the data and site st
 
 #### Tables
 
-Data is displayed in tables for easier understanding by the user. The following data is displayed in tables:
+The Tabulate was used to disaply data in tables. Data is displayed in tables for easier understanding by the user. The following data is displayed in tables:
 - Username & PIN
 - Account Balance
 - All users
+
+#### Slow Typing
+
+The sleep library was used to delay the speed of displaying some text. This was to allow the user time to process the information. There are two uses of this:
+- Delay before displaying a while line of text or information.
+- A staggered 'typing' effect when the text is displayed at reading speed.
+
 
 ## Features
 ### Existing Features
@@ -185,7 +193,7 @@ If their username is valid:
 
 #### Check Account Balance
 
-A user can check their account balance and will be shown a table containing all past transactions. Then below the table a final account balance is disaplayed.
+A user can check their account balance and will be shown a table containing all past transactions. Then below the table a final account balance is disaplayed. To return to the account home the user has to press the return key.
 
 #### Deposit Funds
 
@@ -237,7 +245,6 @@ If that is confiremd all the user information is removed from the database.
 - Transfer funds to another user.
 - Show only the 10 most recent transactions on account balance.
 - Allow users to change PIN.
-- Add an admin feature to view all customers and corresponding account information, search for a user and delete a users profile.
 
 [Back to top](<#contents>)
 
@@ -264,8 +271,6 @@ If that is confiremd all the user information is removed from the database.
 
 #### Unsolved Bugs
 
-- Add in use PIN for withdraw function.
-- Add option to change PIN.
 - Allow cancel create accont and login with 0.
 
 [Back to top](<#contents>)
@@ -287,45 +292,66 @@ As well as testing myself, the application was tested by the following external 
 All testers passed all tests successfully without any issues or bugs found during testing! 
 The folloiwng tests were carried out.
 
-| Function              | Test                                           | Result |
-|-----------------------|------------------------------------------------|--------|
-| Welcome               | Enter incorrent value                          | Given error message and chance to try again. |
-|                       | Enter '1'                                      | User is prompted to enter their username |
-|                       | Enter '2'                                      | The user is asked to select a username |
-|                       | Enter '0'                                      | 'Closing application...' is printed to the terminal then it closes. |
-| Login: enter username | Enter username below 5 chracters               | 'User not found, please try again' printed to the termianl and the option to try again. |
-|                       | Enter password over 15 characters              | 'User not found, please try again' printed to the termianl and the option to try again. |
-|                       | Enter username containing whitespace           | 'User not found, please try again' printed to the termianl and the option to try again. |
-|                       | Enter unknown username                         | 'User not found, please try again' printed to the termianl and the option to try again. |
-|                       | Enter empty field                              | 'User not found, please try again' printed to the termianl and the option to try again. |
-|                       | Enter '0'                                      | 'Closing application...' is printed to the terminal then it closes. |
-|                       | Enter '2'                                      | Sends the user to Create Account. |
-| Login: enter PIN      | Enter incorrect PIN                            | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
-|                       | Enter empty field                              | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
-|                       | Enter not a number                             | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
-|                       | Enter corect PIN                               | Takes you to Account Home |
-|                       | Enter '0'                                      | 'Closing application...' is printed to the terminal then it closes. |
-| Account Home          | Enter an invalid selection                     | 'Not a valid selection" printed to the terminal and the option to try again. |
-|                       | Enter '1'                                      | The user is taken to account balance screen. |
-|                       | Enter '2'                                      | The user is take  to the Deposit Funds screen. |
-|                       | Enter '3'                                      | The user is taken to the Withdraw Funds screen |
-|                       | Enter '4'                                      | The user is shown their username and PIN |
-|                       | Enter '0'                                      | The user is 'logged out' and the terminal window is cleared. |
-| Create Account        | Enter a username below 5 chracters             | 'x is not valid. Select a username between 5 & 15 characters." is displayed to the terminal and the user can try again. |
-|                       | Enter a username over 15 characters            | 'x is not valid. Select a username between 5 & 15 characters." is displayed to the terminal and the user can try again. |
-|                       | Enter username containing whitespace           | 'x is not valid, containes whitespace." is displayed to the terminal and the user can try again. |
-|                       | Enter '0'                                      | 'Closing application...' is printed to the terminal, the screen is cleared then the application closes. |
-|                       | Enter '1'                                      | The user is asked for the username to login and the login function is run. |
-| Check Account Balance | Type any character followed by return          | Takes you to Account Home|
-| Deposit Funds         | Enter a non number                             | 'x is not a valid ammount' is printed to the terminal and the option to try again. |
-|                       | Enter a negative number                        | 'Withdraw ammount cannot be negative' is printed to the terminal and the option to try again. |
-|                       | Enter a number with more than 2 decimal places | The ammount is rounded to 2 decial places, added to the database and the user is taken back to Account Home. |
-| Withdraw Funds        | Enter a non number                             | 'x is not a valid ammount' is printed to the terminal and the option to try again. |
-|                       | Enter a negative number                        | 'Withdraw ammount cannot be negative' is printed to the terminal and the option to try again. |
-|                       | Enter a number higher than the account balance | 'Insufficent funds' is printed to the terminal and the user is given the option to enter a new ammount. |
-|                       | Enter the same ammount as the balance          | The full ammount is withdrawn and the user is taken back to the Account Home screen. |
-|                       | Enter a number with more than 2 decimal places | The ammount is rounded to 2 decimal places, withdrawn from the databse and the user is taken back to the Account Home screen. |
-| View PIN              | Type anything followed by return               | The user is taken to Account Home |
+| Function                    | Test                                           | Result |
+|-----------------------------|------------------------------------------------|--------|
+| Welcome                     | Enter incorrent value                          | Given error message and chance to try again. |
+|                             | Enter '1'                                      | User is prompted to enter their username |
+|                             | Enter '2'                                      | The user is asked to select a username |
+|                             | Enter '0'                                      | 'Closing application...' is printed to the terminal then it closes. |
+| Login: enter username       | Enter username below 5 chracters               | 'User not found, please try again' printed to the termianl and the option to try again. |
+|                             | Enter password over 15 characters              | 'User not found, please try again' printed to the termianl and the option to try again. |
+|                             | Enter username containing whitespace           | 'User not found, please try again' printed to the termianl and the option to try again. |
+|                             | Enter unknown username                         | 'User not found, please try again' printed to the termianl and the option to try again. |
+|                             | Enter empty field                              | 'User not found, please try again' printed to the termianl and the option to try again. |
+|                             | Enter '0'                                      | 'Closing application...' is printed to the terminal then it closes. |
+|                             | Enter '2'                                      | Sends the user to Create Account. |
+| Login: enter PIN            | Enter incorrect PIN                            | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
+|                             | Enter empty field                              | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
+|                             | Enter not a number                             | 'Incorect PIN, please try again' printed to the terminal and the option to try again. |
+|                             | Enter corect PIN                               | Takes you to Account Home |
+|                             | Enter '0'                                      | 'Closing application...' is printed to the terminal then it closes. |
+| Account Home                | Enter an invalid selection                     | 'Not a valid selection" printed to the terminal and the option to try again. |
+|                             | Enter '1'                                      | The user is taken to account balance screen. |
+|                             | Enter '2'                                      | The user is take  to the Deposit Funds screen. |
+|                             | Enter '3'                                      | The user is taken to the Withdraw Funds screen |
+|                             | Enter '4'                                      | The user is shown their username and PIN |
+|                             | Enter '0'                                      | The user is 'logged out' and the terminal window is cleared. |
+| Create Account              | Enter a username below 5 chracters             | 'x is not valid. Select a username between 5 & 15 characters." is displayed to the terminal and the user can try again. |
+|                             | Enter a username over 15 characters            | 'x is not valid. Select a username between 5 & 15 characters." is displayed to the terminal and the user can try again. |
+|                             | Enter username containing whitespace           | 'x is not valid, containes whitespace." is displayed to the terminal and the user can try again. |
+|                             | Enter a username beginning with a non letter   | 'x is not valid. First character must be a letter.' Is displayed and the user is given another chance to enter a username. |
+|                             | Enter '1'                                      | The user is asked for the username to login and the login function is run. |
+| Check Account Balance       | Type any character followed by return          | Takes you to Account Home|
+| Deposit Funds               | Enter a non number                             | 'x is not a valid ammount' is printed to the terminal and the option to try again. |
+|                             | Enter a negative number                        | 'Withdraw ammount cannot be negative' is printed to the terminal and the option to try again. |
+|                             | Enter a number with more than 2 decimal places | The ammount is rounded to 2 decial places, added to the database and the user is taken back to Account Home. |
+| Withdraw Funds              | Enter a non number                             | 'x is not a valid ammount' is printed to the terminal and the option to try again. |
+|                             | Enter a negative number                        | 'Withdraw ammount cannot be negative' is printed to the terminal and the option to try again. |
+|                             | Enter a number higher than the account balance | 'Insufficent funds' is printed to the terminal and the user is given the option to enter a new ammount. |
+|                             | Enter the same ammount as the balance          | The full ammount is withdrawn and the user is taken back to the Account Home screen. |
+|                             | Enter a number with more than 2 decimal places | The ammount is rounded to 2 decimal places, withdrawn from the databse and the user is taken back to the Account Home screen. |
+| View PIN                    | Type anything followed by return               | The user is taken to Account Home |
+| Delete account              | 'n' entered                                    | 'Going to account home...' is displayed and the account home panned is loaded.|
+|                             | 'N' entered                                    | 'Going to account home...' is displayed and the account home panned is loaded.|
+|                             | 'y' entered                                    | User is prompted for their PIN |
+|                             | 'y' entered                                    | User is prompted for their PIN |
+|                             | Anything else entered                          | 'Invalid selection. Enter Y to delete your account or N to cancel' displayed and the user is given the chance to enter a valid response. |
+| Delete account PIN entery   | Incorrect pin entered                          | The user is taken back to account home. |
+|                             | Correct PIN entered                            | 'Deleting account... Account succesfully deleted. Logging out...' is displayed and the user is taken to the login page. |
+| Admin Pannel                | Type '0'                                       | 'Loggin out...' is displayed then the login page is loaded. |
+|                             | Type '1'                 | The user data page is disaplyed containing a table with all the users in the database along with their PIN and balance. |
+|                             | Type '2'                                       | the user is prompted for a username. |
+|                             | Type an invalid selection | 'Invalid selection. Please try again.' is displayed and the user is allowed another chance to ented a valid selection. |
+| Admin view all users        | Press any key                                  | Admin pannel is displayed. |
+| Admin delete a user         | Enter a username not in the database           | 'User not found' disaplayed and the option to try again. |
+|                             | Enter a username in the databse                | The user is prompted to enter y/n to confirm |
+|                             | '0' selected                                   |  'Loggin out...' is displayed then the login page is loaded. |
+|                             | '1' selected                                   | The User data screen is loaded. |
+| Admin confirm delete a user | 'y' entered | 'Deleting account... Account successfully deleted' is shown and the admin pannel is loaded. |
+| Admin confirm delete a user | 'Y' entered | 'Deleting account... Account successfully deleted' is shown and the admin pannel is loaded. |
+| Admin confirm delete a user | 'n' entered | 'cancelling...' is typed and the admin pannel is loaded. |
+| Admin confirm delete a user | 'N' entered | 'cancelling...' is typed and the admin pannel is loaded. |
+| Admin confirm delete a user | an invalid selection entered | 'Invalid selection' is displayed and the user is prompted to try again.|
 
 [Back to top](<#contents>)
 
@@ -379,7 +405,7 @@ To clone the project on GitHub:
 
 ### Languages
 
-- Python
+- Python was used for the functunality of the programme.
 
 ### Libraries
 
@@ -400,5 +426,8 @@ To clone the project on GitHub:
 - [Kent Yates](<https://github.com/Jelly-man>).
 - Luke Newman for testing my programme in the most creative ways.
 - Selina Sheerin for moral support and userbility testing.
+- Stack overflow for continues trouble shooting.
+- The Code Institute slack channel for inspiration on features to add.
+- Chris SV via slack for testing the programme.
 
 [Back to top](<#contents>)
