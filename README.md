@@ -26,6 +26,7 @@ Lumos Online Banking is a Python based banking app where users can create an acc
     * [Existing Features](<#existing-features>)
         * [Login](<#login>)
         * [Create Account](<#create-account>)
+        * [Account Home](<#account-home>)
         * [Check Account Balance](<#Check-Account-Balance>)
         * [Deposit Funds](<#Deposit-Funds>)
         * [Withdraw Funds](<#Withdraw-Funds>)
@@ -159,7 +160,8 @@ The sleep library was used to delay the speed of displaying some text. This was 
 Upon starting the programme the banks logo is displayed and the user is given the option to:
 1. Login
 2. Create an account
-0. Exit
+
+![Welcome screen](assets/lumos-welcome.png)
 
 #### Login
 
@@ -176,6 +178,8 @@ If their PIN matches the one associated with their account in the databse they a
 
 They can exit the programme at any time by entering '0' or create an account by entering '2'.
 
+![Login page](assets/lumos-incorrect-login.png)
+
 #### Create Account
 
 To create an account the user is asked for a username. They are shown an apporpiate error message if their username:
@@ -191,9 +195,25 @@ If their username is valid:
     - Withdraw
     - Balance
 
+[Create account](assets/lumos-create-account.png)
+
+#### Account Home
+
+When a user logsin they are taken to the account home with the options to:
+- 0: Logout
+- 1: Check Account Balance
+- 2: Deposit Funds
+- 3: Withdraw Funds
+- 4: View PIN
+- 5: Delete Account
+
+![Account home](assets/lumos-account-home.png)
+
 #### Check Account Balance
 
 A user can check their account balance and will be shown a table containing all past transactions. Then below the table a final account balance is disaplayed. To return to the account home the user has to press the return key.
+
+![View account balance](assets/lumos-balance.png)
 
 #### Deposit Funds
 
@@ -202,6 +222,7 @@ The user input is validated and an apporpiate error message will be shown if:
 - The amount entered is not numeric
 - The amount entered is a negative number
 
+![Deposit funds](assets/lumos-deposit-funds.png)
 
 #### Withdraw Funds
 
@@ -210,9 +231,13 @@ The user can withdraw funds from their account. They are shown their current bal
 - The amount entered is a negative number
 - The amount entered exceeds the current balance of that customer's account
 
+![Withdraw funds](assets/lumos-withdraw-funds.png)
+
 #### View PIN
 
 As the user needs their PIN to login and delete thier account and they may not have noted it down upon creating their account, they can view it from the account home.
+
+![view pin](assets/lumos-view-pin.png)
 
 #### Logout
 
@@ -222,9 +247,13 @@ To keep the users account safe, they can logout which will clear the terminal an
 
 A user can delete their account, but as this cannot be undone they need to confirm be clicking 'y' and entering their PIN. Once they have done both those things, all the user information is deleted from the database.
 
+![delete account](assets/lumos-delete-account.png)
+
 #### Admin Pannel
 
 There is an admin account that can view all the current users and delete user accounts. This is accesable from the login page by entering 'ADMIN' as the username and 'password' as the PIN. From the admin pannel there are two options other than logout. View all users and delete a user.
+
+![admin pannel](assets/lumos-admin.png)
 
 ##### Admin: View all users
 
@@ -234,10 +263,14 @@ The admin has the option to view all the users in the database. The data is disa
 - PIN
 - Balance
 
+![view all users](assets/lumos-all-users.png)
+
 ##### Admin: Delete a user
 
 To delete a the admin is asked for the username of the user they wish to delete then aksed to conform they want to delete the account.
 If that is confiremd all the user information is removed from the database.
+
+![Admin delete a user](assets/lumos-admin-delete-user.png)
 
 [Back to top](<#contents>)
 ### Future Features
@@ -348,10 +381,10 @@ The folloiwng tests were carried out.
 |                             | '0' selected                                   |  'Loggin out...' is displayed then the login page is loaded. |
 |                             | '1' selected                                   | The User data screen is loaded. |
 | Admin confirm delete a user | 'y' entered | 'Deleting account... Account successfully deleted' is shown and the admin pannel is loaded. |
-| Admin confirm delete a user | 'Y' entered | 'Deleting account... Account successfully deleted' is shown and the admin pannel is loaded. |
-| Admin confirm delete a user | 'n' entered | 'cancelling...' is typed and the admin pannel is loaded. |
-| Admin confirm delete a user | 'N' entered | 'cancelling...' is typed and the admin pannel is loaded. |
-| Admin confirm delete a user | an invalid selection entered | 'Invalid selection' is displayed and the user is prompted to try again.|
+|                             | 'Y' entered | 'Deleting account... Account successfully deleted' is shown and the admin pannel is loaded. |
+|                             | 'n' entered | 'cancelling...' is typed and the admin pannel is loaded. |
+|                             | 'N' entered | 'cancelling...' is typed and the admin pannel is loaded. |
+|                             | an invalid selection entered | 'Invalid selection' is displayed and the user is prompted to try again.|
 
 [Back to top](<#contents>)
 
@@ -359,12 +392,9 @@ The folloiwng tests were carried out.
 Git and GitHub were used for version control. As Python is a backend language and can't be displayed with GitHub I used Heroku for the live preview.
 
 ### Heroku Deployment
-1. Login to Heroku
-![Login to heroku](assets/heroko-login.png)
-2. Click 'New in the top right and 'Create new app'.
-![Creake new Heroku app](assets/heroku-new-app.png)
+1. Login to [Heroku](https://id.heroku.com/login)
+2. Click 'New' in the top right and 'Create new app'.
 3. Enter a unique application name, select your region and click 'Create app'.
-
 4. Click the 'settings' tab 
 ![Heroku settings tab](assets/heroku-settings.png)
 5. Under 'Config Vars' click 'Reveal Config Vars'
