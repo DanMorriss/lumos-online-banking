@@ -304,11 +304,13 @@ If that is confiremd all the user information is removed from the database.
 - Deposit not working currency referenced before assignment. Moved the turn_to_currrency function before the type statement.
 - Could eneter a negative ammount to deposit. Added in an if statement disallowing it.
 - A user could create an account using numbers so I added an elif statement to check the first letter is not a number.
+- If you create an account you cannot delete it without logging out and then loggin back in. To fix this I made the user login after creating an account.
+- Once the user selected 'create an account' they had to complete it, I allowed them to press 1 at any point and go to the login page.
 
 
 #### Unsolved Bugs
 
-- Allow cancel create accont and login with 0.
+No known bugs.
 
 [Back to top](<#contents>)
 

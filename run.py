@@ -166,7 +166,6 @@ def create_account():
     print(Fore.GREEN + 'To create an account, please select a username')
     print('between 5 and 15 characters long.')
     print('')
-    customer_database = SHEET.worksheet('customers')
     account_loop = True
     while account_loop:
         username = input(Fore.WHITE + '>')
@@ -177,7 +176,7 @@ def create_account():
             return
 
         # Don't allow repeat usernames
-        if customer_database.find(username, in_column=1) is not None:
+        if CUSTOMERS.find(username, in_column=1) is not None:
             print(Fore.RED + 'Username unavalible, try again.')
         # Check for whitespace
         elif any(char.isspace() for char in username):
@@ -195,7 +194,7 @@ def create_account():
             # Save user information to database
             created_user = User(username, pin)
             user_information = [created_user.username, created_user.pin]
-            customer_database.append_row(user_information)
+            CUSTOMERS.append_row(user_information)
             generate_worksheet(username)
             # Tell user PIN
             print(Fore.BLUE + 'Account created.')
@@ -203,10 +202,9 @@ def create_account():
             print(f'Your PIN is: {created_user.pin}')
             # Run login function
             account_loop = False
-
-            print('Press enter to go to account home')
+            print('Press enter to go to login')
             input(Fore.WHITE + '>')
-            account_home(created_user.username, created_user.pin)
+            login()
         else:
             print(Fore.RED + f'{username} is not valid.')
             print(Fore.GREEN + 'Select a username between 5 & 10 characters.')
