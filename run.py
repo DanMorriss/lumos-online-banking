@@ -322,7 +322,7 @@ def deposit_funds(username, pin):
         try:
             currency = turn_to_currency(deposit_ammount)
             if currency < 0:
-                print(Fore.RED + 'Withdraw ammount cannot be negative')
+                print(Fore.RED + 'Deposit amount cannot be negative')
                 invalid_amount()
             else:
                 type(Fore.GREEN + f'Depositing £{currency}')
