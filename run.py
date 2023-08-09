@@ -312,15 +312,15 @@ def deposit_funds(username, pin):
     type('How much would you like to deposit?')
 
     while True:
-        deposit_ammount = input(Fore.WHITE + '£')
+        deposit_amount = input(Fore.WHITE + '£')
 
         # Give the option to exit
-        if deposit_ammount == '0':
+        if deposit_amount == '0':
             break
 
         # Deposit into account
         try:
-            currency = turn_to_currency(deposit_ammount)
+            currency = turn_to_currency(deposit_amount)
             if currency < 0:
                 print(Fore.RED + 'Deposit amount cannot be negative')
                 invalid_amount()
@@ -334,16 +334,16 @@ def deposit_funds(username, pin):
 
         # Tell user to enetr a valid number.
         except ValueError:
-            print(Fore.RED + f'{deposit_ammount} is not a valid ammount.')
+            print(Fore.RED + f'{deposit_amount} is not a valid amount.')
 
     account_home(username, pin)
 
 
-def turn_to_currency(ammount):
+def turn_to_currency(amount):
     """
     Turns a number into a float with 2 decimal places.
     """
-    currency = round(float(ammount), 2)
+    currency = round(float(amount), 2)
     return currency
 
 
@@ -366,20 +366,20 @@ def withdraw_funds(username, pin):
     print('')
 
     while True:
-        withdraw_ammount = input(Fore.WHITE + '£')
+        withdraw_amount = input(Fore.WHITE + '£')
 
         # Give the option to exit
-        if withdraw_ammount == '0':
+        if withdraw_amount == '0':
             # account_home(username, pin)
             break
 
         try:
-            currency = turn_to_currency(withdraw_ammount)
+            currency = turn_to_currency(withdraw_amount)
             if currency > last_balance:
                 print(Fore.RED + 'Insufficent funds')
                 invalid_amount()
             elif currency < 0:
-                print(Fore.RED + 'Withdraw ammount cannot be negative')
+                print(Fore.RED + 'Withdraw amount cannot be negative')
                 invalid_amount()
             else:
                 deposit = [0, currency, last_balance - currency]
@@ -391,7 +391,7 @@ def withdraw_funds(username, pin):
 
         # Tell user to enetr a valid number.
         except ValueError:
-            print(Fore.RED + f'{withdraw_ammount} is not a valid ammount.')
+            print(Fore.RED + f'{withdraw_amount} is not a valid amount.')
 
     account_home(username, pin)
 
