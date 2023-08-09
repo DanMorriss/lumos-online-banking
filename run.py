@@ -72,10 +72,12 @@ def home():
     print('                                   [Enter 0 to go to Account Home]')
     print('')
 
-
+# Create functions for reused print statements
 def invalid_amount():
     print(Fore.GREEN + 'Please select another amount')
 
+def invalid_selection():
+    print(Fore.RED + 'Invalid selection')
 
 def welcome():
     """
@@ -101,7 +103,7 @@ def welcome():
             create_account()
             break
         else:
-            print(Fore.RED + 'Invalid selection')
+            invalid_selection()
             print(Fore.GREEN + 'Enter 1 to login or 2 to create an account')
 
 
@@ -444,7 +446,7 @@ def delete_account(username, pin):
                 account_home(username, pin)
                 break
         else:
-            print(Fore.RED + 'Invalid selection')
+            invalid_selection()
             print(Fore.GREEN + 'Enter Y to delete your account or N to cancel')
 
     sleep(1)
@@ -483,7 +485,7 @@ def admin_delete_account(username):
             admin_login('ADMIN', 'password')
             return
         else:
-            print(Fore.RED + 'Invalid selection')
+            invalid_selection()
             print(Fore.GREEN + 'Enter Y to delete your account or N to cancel')
 
     admin_login('ADMIN', 'password')
