@@ -27,7 +27,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('lumos_online_banking')
 CUSTOMERS = SHEET.worksheet('customers')
-data = CUSTOMERS.get_all_values()
 
 
 def type(text):
