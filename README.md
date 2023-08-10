@@ -83,6 +83,8 @@ As a site owner you may want to:
 - View all the users and their details in the database
 - Delete a user
 
+[Back to top](<#contents>)
+
 ## User Experience (UX)
 
 ### Site Structure
@@ -124,6 +126,8 @@ The balance sheets contain columns for:
 - Withdraw
 - Balance
 
+[Back to top](<#contents>)
+
 ### Design Choices
 
 Within the confines of the terminal a few modifications have been made to improve the UX.
@@ -160,6 +164,7 @@ The sleep library was used to delay the speed of displaying some text. This was 
 - Delay before displaying a while line of text or information.
 - A staggered 'typing' effect when the text is displayed at reading speed.
 
+[Back to top](<#contents>)
 
 ## Features
 ### Existing Features
@@ -222,7 +227,7 @@ When a user logs in they are taken to the account home with the options to:
 
 A user can check their account balance and will be shown a table containing all past transactions. Then below the table a final account balance is displayed. To return to the account home the user has to press the return key.
 
-![View account balance](assets/lumos-balance2.png)
+![View account balance](assets/lumon-balance2.png)
 
 #### Deposit Funds
 
@@ -287,6 +292,7 @@ If that is confiremd all the user information is removed from the database.
 ![Admin delete a user](assets/lumos-admin-delete-user.png)
 
 [Back to top](<#contents>)
+
 ### Future Features
 
 - Transfer funds to another user.
@@ -359,7 +365,7 @@ No known bugs.
 
 - PEP8
     - A single error was found bythe [PEP8](https://pep8ci.herokuapp.com/)
-![Python Validation](<assets/python-validation.png>) validator, but it was for a line of code being too long. As this won't affect the terminal view I decided to leave it for easy of code reading.
+![Python Validation](<assets/python-validation.png>) validator, but it was for a line of code being too long. As this won't affect the terminal view I decided to leave it to make the code easier to understand.
     
 
 ### Peer Testing
@@ -452,7 +458,6 @@ Git and GitHub were used for version control. As Python is a backend language an
 12. Under 'Automatic deploys' click 'Enable Automatic Deploys'
 ![Heroku automatic deployment](assets/heroku-automatic-deployment.png)
 
-[Back to top](<#contents>)
 ### To Fork the Project
 To make a copy of the GitHub Repository you can fork a copy to edit it without changing the root file. This can then be used to update the original repository. To fork take the following steps:
 1. Login to GitHub
