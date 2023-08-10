@@ -72,15 +72,19 @@ def home():
     print('                                   [Enter 0 to go to Account Home]')
     print('')
 
+
 # Create functions for reused print statements
 def invalid_amount():
     print(Fore.GREEN + 'Please select another amount')
 
+
 def invalid_selection():
     print(Fore.RED + 'Invalid selection')
 
+
 def logging_out():
     type(Fore.GREEN + 'Logging out...')
+
 
 def welcome():
     """
@@ -126,16 +130,16 @@ class User:
 
 def login():
     """
-    Validates users username and pin then either sends them to 
+    Validates users username and pin then either sends them to
     the login function or
     sends the user back to the welcome page.
     """
     print_logo()
     print('')
-    #Get username
+    # Get username
     print('Please enter your username to login')
     submitted_un = input(Fore.WHITE + '>')
-    #Get PIN
+    # Get PIN
     print(Fore.GREEN + 'Please enter your PIN')
     submitted_pin = input(Fore.WHITE + '>')
     # Find username (returns None if not in database)
@@ -179,7 +183,7 @@ def create_account():
     print(Fore.GREEN + 'To create an account, please select a username')
     print('between 5 and 15 characters long.')
     print('')
-    
+
     # Username selection
     account_loop = True
     while account_loop:
@@ -340,7 +344,7 @@ def deposit_funds(username, pin):
     last_balance = turn_to_currency(last_balance_info[-1])
     # Display option to go to account home
     home()
-    
+
     type('How much would you like to deposit?')
     # User input loop
     while True:

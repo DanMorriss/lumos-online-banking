@@ -37,8 +37,10 @@ Lumos Online Banking is a Python based banking app where users can create an acc
         * [Admin: View all users](<#admin-view-all-users>)
         * [Admin: Delete a User](<#admin-delete-a-user>)
     * [Future Features](<#future-features>)
-* [**Data Model**](<#data-model>)
-* [**Flowchart**](<#flowchart>)
+* [**Technologies Used**](<#technologies-used>)
+    * [Languages](<#languages>)
+    * [Libraries](<#libraries>)
+    * [Resources](<#resources>)
 * [**Testing**](<#testing>)
     * [Bugs](<#bugs>)
         * [Solved Bugs](<#solved-bugs>)
@@ -50,9 +52,8 @@ Lumos Online Banking is a Python based banking app where users can create an acc
     * [To Fork the Project](<#to-fork-the-project>)
     * [To Clone the Project](<#to-clone-the-project>)
 * [**Credits**](<#credits>)
-    * [Resources](<#resources>)
-    * [Languages](<#languages>)
-    * [Libraries](<#libraries>)
+    * [Content](<#content>)
+    * [Technical](<#technical>)
 * [**Acknowledgements**](<#acknowledgements>)
 
 ## Project
@@ -294,6 +295,37 @@ If that is confiremd all the user information is removed from the database.
 
 [Back to top](<#contents>)
 
+## Technologies Used
+
+### Languages
+
+- Python was used for the functunality of the programme.
+
+### Libraries
+
+- [gspread](https://docs.gspread.org/en/v3.7.0/api.html) to link up the Google Sheet.
+- [credentials](https://pypi.org/project/credentials/) to link the Google Sheet.
+- [pyfiglet](https://www.geeksforgeeks.org/python-ascii-art-using-pyfiglet-module/) for the logo.
+- [time](https://www.programiz.com/python-programming/time/sleep) for the sleep fuction.
+- [colorama](https://pypi.org/project/colorama/) to color the text in the terminal.
+- [os](https://www.geeksforgeeks.org/clear-screen-python/) to clear the terminal.
+- [random](https://docs.python.org/3/library/random.html) to generate a 4 digit random PIN.
+- [Tabulate](https://pypi.org/project/tabulate/) to put data in a table.
+
+### Resources
+
+- [Lucidchart](<https://www.lucidchart.com/pages/>) for the flowchart.
+- [Github](<https://github.com/>) to store the code.
+- [Heroku](<https://heroku.com/>)
+- [VS Code](<https://code.visualstudio.com/>) to write the code.
+- [Am I Responsive?](<https://ui.dev/amiresponsive>) for the display image across devices.
+- [Stack Overflow](<https://stackoverflow.com/>) for general troubleshooting.
+- [W3 Schools](<https://www.w3schools.com/>) for general troubleshooting.
+- [MDN Web Docs](<https://developer.mozilla.org/en-US/>) for general troubleshooting.
+- [Google Sheets](<https://www.google.co.uk/sheets/about/>) for the spreadsheet used to store the customer data.
+
+[Back to top](<#contents>)
+
 ## Testing
 
 ### Bugs
@@ -326,7 +358,8 @@ No known bugs.
 ### Validator Testing
 
 - PEP8
-    - No errors were returned from [PEP8](https://pep8ci.herokuapp.com/)
+    - A single error was found bythe [PEP8](https://pep8ci.herokuapp.com/)
+![Python Validation](<assets/python-validation.png>) validator, but it was for a line of code being too long. As this won't affect the terminal view I decided to leave it for easy of code reading.
     
 
 ### Peer Testing
@@ -435,46 +468,26 @@ To clone the project on GitHub:
 5. Change the current working directory to the location where you want the cloned directory to be made
 6. Type `git clone` and then paste the URL copied from GitHub
 7. Press enter and the local clone will be created
-![Clone walkthrough image](assets/images/clone.png)
+![Clone walkthrough image](assets/images/clone.jpg)
 
 [Back to top](<#contents>)
 
 ## Credits
 
-### Resources
+### Content
 
-- [Lucidchart](<https://www.lucidchart.com/pages/>) for the flowchart.
-- [Github](<https://github.com/>) to store the code.
-- [Heroku](<https://heroku.com/>)
-- [VS Code](<https://code.visualstudio.com/>) to write the code.
-- [Am I Responsive?](<https://ui.dev/amiresponsive>) for the display image across devices.
-- [Stack Overflow](<https://stackoverflow.com/>) for general troubleshooting.
-- [W3 Schools](<https://www.w3schools.com/>) for general troubleshooting.
-- [MDN Web Docs](<https://developer.mozilla.org/en-US/>) for general troubleshooting.
-- [Google Sheets](<https://www.google.co.uk/sheets/about/>) for the spreadsheet used to store the customer data.
+All content was created by Daniel Morriss.
+The template for the readme was supplied by Code Institute with additional changes suggested by my mentor Precious Ijege from  [World of Marcus](<https://github.com/worldofmarcus/project-portfolio-3>).
 
-### Languages
+### Technical
 
-- Python was used for the functunality of the programme.
-
-### Libraries
-
-- [gspread](https://docs.gspread.org/en/v3.7.0/api.html) to link up the Google Sheet.
-- [credentials](https://pypi.org/project/credentials/) to link the Google Sheet.
-- [pyfiglet](https://www.geeksforgeeks.org/python-ascii-art-using-pyfiglet-module/) for the logo.
-- [time](https://www.programiz.com/python-programming/time/sleep) for the sleep fuction.
-- [colorama](https://pypi.org/project/colorama/) to color the text in the terminal.
-- [os](https://www.geeksforgeeks.org/clear-screen-python/) to clear the terminal.
-- [random](https://docs.python.org/3/library/random.html) to generate a 4 digit random PIN.
-- [Tabulate](https://pypi.org/project/tabulate/) to put data in a table.
-
-[Back to top](<#contents>)
+The Code Institute walkthrough project Love Sandwiches was used as insporation for the project and how to link up google sheets with Python.
 
 ## Acknowledgements
 
 - [Precious Ijege](<https://github.com/precious-ijege>), my Code Institute Mentor.
 - [Kent Yates](<https://github.com/Jelly-man>).
-- Luke Newman for testing my programme in the most creative ways.
+- [Luke Newman](<https://github.com/CrunkV5>) for testing my programme in the most creative ways.
 - Selina Sheerin for moral support and usability testing.
 - Stack overflow for continues trouble shooting.
 - The Code Institute slack channel for inspiration on features to add.
