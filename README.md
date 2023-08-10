@@ -473,7 +473,7 @@ To clone the project on GitHub:
 5. Change the current working directory to the location where you want the cloned directory to be made
 6. Type `git clone` and then paste the URL copied from GitHub
 7. Press enter and the local clone will be created
-![Clone walkthrough image](assets/images/clone.jpg)
+![Clone walkthrough image](assets/clone.jpg)
 
 [Back to top](<#contents>)
 
